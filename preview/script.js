@@ -47,7 +47,6 @@ Interactive.prototype = {
 		return this;
 	},
 	printFingers:function(){
-		console.log('printing fingers');
 		var self = this;
 		var types = ['red','blue','white','black','map'];
 		this.fingers_wrapper = $('<div>')
@@ -60,14 +59,26 @@ Interactive.prototype = {
 					.addClass('finger')
 					.addClass('finger_'+type)
 					.appendTo(self.fingers_wrapper)
-					.fadeIn();
+					.fadeIn()
+					.click(function(){
+						self.fingerClicked(type);
+					});
 				self.fingers[type] = new_finger;
 			},index*200);
 		});
 		return this;
 	},
+	fingerClicked:function(type){
+		if(!this.piano_view){
+			this.openPopup(type);
+		}
+		else{
+			this.playSound(type);
+		}
+	},
 	showPiano:function(){
 		var self = this;
+		this.piano_view = true;
 		if(!this.piano){
 			this.piano = $('<div>')
 				.addClass('piano')
@@ -85,6 +96,7 @@ Interactive.prototype = {
 	},
 	hidePiano:function(){
 		var self = this;
+		this.piano_view = false;
 		this.piano
 			.animate({
 				'opacity':0,
@@ -131,9 +143,12 @@ Interactive.prototype = {
 				},500);
 		}
 	},
-	activateSoundListeners:function(){
-
+	openPopup:function(type){
+		console.log('open popup: '+type);
 	},
+	playSound:function(type){
+		console.log('play sound: '+type);
+	}
 };
 var my_interactive = new Interactive('int');
 	
