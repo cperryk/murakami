@@ -115,7 +115,7 @@ Interactive.prototype = {
 			print_notes = true;
 		}
 		this.bot
-			.show()
+			.fadeIn()
 			.animate({
 				'opacity':1,
 				'bottom':0
