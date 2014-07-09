@@ -1,0 +1,111 @@
+#int {
+  width: 1012px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid gray;
+  height: 600px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  background: -moz-linear-gradient(top, rgba(198, 199, 203, 0.65) 0%, rgba(234, 234, 234, 0) 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(198, 199, 203, 0.65)), color-stop(100%, rgba(234, 234, 234, 0)));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(198, 199, 203, 0.65) 0%, rgba(234, 234, 234, 0) 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(198, 199, 203, 0.65) 0%, rgba(234, 234, 234, 0) 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(198, 199, 203, 0.65) 0%, rgba(234, 234, 234, 0) 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, rgba(198, 199, 203, 0.65) 0%, rgba(234, 234, 234, 0) 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6c6c7cb', endColorstr='#00eaeaea',GradientType=0 );
+  /* IE6-9 */ }
+  #int .top_bar {
+    text-align: center;
+    position: relative;
+    text-transform: uppercase;
+    color: #F9F7F8;
+    padding: 0.7em;
+    line-height: 1em;
+    background-color: #211F20; }
+    #int .top_bar .right_wrapper {
+      position: absolute;
+      top: 0.7em;
+      right: 100px;
+      line-height: 1em; }
+  #int .fingers_wrapper {
+    z-index: 2;
+    margin-top: 100px;
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 250px; }
+  #int .finger {
+    display: none;
+    cursor: pointer;
+    bottom: 0px;
+    position: absolute;
+    width: 50px;
+    height: 250px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2); }
+    #int .finger.finger_red {
+      left: 0px;
+      bottom: 15px;
+      background-color: red; }
+    #int .finger.finger_blue {
+      bottom: 45px;
+      left: 70px;
+      background-color: blue; }
+    #int .finger.finger_white {
+      bottom: 65px;
+      left: 140px;
+      background-color: white; }
+    #int .finger.finger_black {
+      bottom: 45px;
+      left: 210px;
+      background-color: black; }
+    #int .finger.finger_map {
+      height: 125px;
+      left: 330px;
+      bottom: 0px;
+      top: auto;
+      background-color: yellow;
+      transform: rotate(45deg);
+      background: url("graphics/map.png"); }
+  #int .btn_music {
+    cursor: pointer;
+    position: absolute;
+    top: 60px;
+    right: 130px;
+    width: 39px;
+    height: 39px;
+    background: url("graphics/btn_music.png"); }
+  #int .piano {
+    position: absolute;
+    bottom: -250px;
+    display: none;
+    background: url("graphics/piano.png");
+    right: 0px;
+    width: 1012px;
+    height: 250px; }
+  #int .bot {
+    position: absolute;
+    height: 65px;
+    width: 1012px;
+    bottom: -65px;
+    right: 0px;
+    display: none;
+    background-color: #211F20;
+    text-align: center; }
+  #int .note {
+    opacity: 0;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin: 15px 15px 15px 0px;
+    border: 1px solid white;
+    border-radius: 50%;
+    behavior: url(PIE.htc); }
+    #int .note:last-child {
+      margin-right: 0px; }

@@ -1,0 +1,792 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"twitter",
+				"twitter_identifier"
+			],
+			[
+				"followed_by",
+				"followed_by_slatesters"
+			],
+			[
+				"target",
+				"target_img_index"
+			],
+			[
+				"poup",
+				"popup_wrapper"
+			],
+			[
+				"popu",
+				"popup_wrapper"
+			],
+			[
+				"eleme",
+				"element_d"
+			],
+			[
+				"PART",
+				"PART_D"
+			],
+			[
+				"get",
+				"getCombination"
+			],
+			[
+				"PAR",
+				"PART_C"
+			],
+			[
+				"random",
+				"randomFromArray"
+			],
+			[
+				"rando",
+				"randomFromArray"
+			],
+			[
+				"ranom",
+				"randomFromArray"
+			],
+			[
+				"add",
+				"addEventListeners"
+			],
+			[
+				"st",
+				"stdout"
+			],
+			[
+				"resize",
+				"resizeCallback"
+			],
+			[
+				"attach",
+				"attached_elements"
+			],
+			[
+				"acti",
+				"activateMarker"
+			],
+			[
+				"pop",
+				"popup_wrapper"
+			],
+			[
+				"cot",
+				"container"
+			],
+			[
+				"conta",
+				"container_point"
+			],
+			[
+				"new",
+				"new_index"
+			],
+			[
+				"active",
+				"active_marker"
+			],
+			[
+				"story",
+				"story_btns_container"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"str_rep",
+				"str_replace"
+			],
+			[
+				"question",
+				"question_index"
+			],
+			[
+				"data",
+				"dataSet"
+			],
+			[
+				"loca",
+				"locationVar"
+			],
+			[
+				"corr",
+				"correct_answer"
+			],
+			[
+				"average",
+				"average_score"
+			],
+			[
+				"sel",
+				"mysqli_select_db"
+			],
+			[
+				"correct",
+				"correct_here"
+			],
+			[
+				"answer",
+				"answeredAlready"
+			],
+			[
+				"starbucks",
+				"starbucks_marker_icon"
+			],
+			[
+				"remo",
+				"removeClass"
+			],
+			[
+				"qu",
+				"quiz_UI"
+			],
+			[
+				"questo",
+				"question_index"
+			],
+			[
+				"remove",
+				"removeClickListener"
+			],
+			[
+				"city",
+				"city_lat_lons"
+			],
+			[
+				"cit",
+				"city_lat_lons"
+			],
+			[
+				"quest",
+				"question_index"
+			],
+			[
+				"answers",
+				"answers_remaining"
+			],
+			[
+				"ans",
+				"answers_available"
+			],
+			[
+				"answ",
+				"answers_remaining"
+			],
+			[
+				"str_re",
+				"str_replace"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 73.0,
+		"selected_items":
+		[
+			[
+				"format",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"wrap",
+				"Word Wrap: Toggle"
+			],
+			[
+				"grunt",
+				"Grunt"
+			],
+			[
+				"right doubl",
+				"Snippet: Insert Right Double Quotation Mark"
+			],
+			[
+				"media",
+				"Snippet: mobile media query"
+			],
+			[
+				"emd",
+				"Snippet: Insert Em Dash"
+			],
+			[
+				"double",
+				"Snippet: Insert Right Double Quotation Mark"
+			],
+			[
+				"double ",
+				"Snippet: Insert Left Double Quotation Mark"
+			],
+			[
+				"rightu",
+				"Snippet: insert right guillmet arrows"
+			],
+			[
+				"insert right",
+				"Snippet: Insert Right Double Quotation Mark"
+			],
+			[
+				"insert left ",
+				"Snippet: Insert Left Double Quotation Mark"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"disabl",
+				"Package Control: Disable Package"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"update",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"min",
+				"Pretty JSON: Minify (compress) JSON"
+			],
+			[
+				"mobile",
+				"Snippet: mobile media query"
+			],
+			[
+				"no",
+				"Snippet: noHighlight"
+			],
+			[
+				"comam",
+				"Snippet: commaSeparateNumber"
+			],
+			[
+				"nonb",
+				"Snippet: insert non-breaking space"
+			],
+			[
+				"slatere",
+				"Snippet: slatered"
+			],
+			[
+				"noh",
+				"Snippet: noHighlight"
+			],
+			[
+				"cofee compi",
+				"Coffee: Compile File"
+			],
+			[
+				"compile",
+				"Coffee: Compile File"
+			],
+			[
+				"cofeecompi",
+				"Coffee: Compile File"
+			],
+			[
+				"theme",
+				"ColorSchemeSelector: Select Color Scheme"
+			],
+			[
+				"slatre",
+				"Snippet: slatered"
+			],
+			[
+				"reii",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reid",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"pret",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"json",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"preti",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"form",
+				"Format: Javascript"
+			],
+			[
+				"pretti",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"java",
+				"Javascript Beautify"
+			],
+			[
+				"word",
+				"Word Wrap: Toggle"
+			],
+			[
+				"random",
+				"Snippet: random item from array"
+			],
+			[
+				"leafl",
+				"Snippet: makeLeafletMap"
+			],
+			[
+				"zoom",
+				"Snippet: insertLeaflet.ZoomFS"
+			],
+			[
+				"leaflet",
+				"Snippet: insertLeaflet.ZoomFS"
+			],
+			[
+				"lintin",
+				"SublimeLinter: Enable Linting"
+			],
+			[
+				"slatred",
+				"Snippet: slatered"
+			],
+			[
+				"slatr",
+				"Set Syntax: LaTeX Memoir"
+			],
+			[
+				"right",
+				"Snippet: insert right guillmet arrows"
+			],
+			[
+				"left",
+				"Snippet: insert left guillmet arrows"
+			],
+			[
+				"slatered",
+				"Snippet: slatered"
+			],
+			[
+				"package",
+				"Package Control: Enable Package"
+			],
+			[
+				"makel",
+				"Snippet: makeLeafletMap"
+			],
+			[
+				"leaf",
+				"Snippet: makeLeafletMap"
+			],
+			[
+				"scrambe",
+				"Snippet: scrambleArray"
+			]
+		],
+		"width": 453.0
+	},
+	"console":
+	{
+		"height": 174.0,
+		"history":
+		[
+			"clear()",
+			"clear",
+			"clear;",
+			"clear()",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/twitter_follows/server-side-stuff/followed_by_slatesters.json",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/twitter_follows/htdocs/followed_by_slatesters.json",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/twitter_follows/twitter_follows.sublime-project",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/reincarnation/htdocs/reincarnation.css",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/preview/quizzes/theme_song/theme_song.json",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/sound/theme_songs/theme_songs.aup",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/src/quizzes/theme_song/theme_song.cson",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/sound/first_second/thrift_shop.mp3",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/src/quizzes/first_second/sound/full_let_it_go.mp3",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/src/quizzes/summer_song/sound/f.mp3",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/src/quizzes/summer_song/sound/best_i_ever_had.mp3",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/sound/first_second/somebody_that_i_used_to_know.mp3",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/src/quizzes/summer_song/sound/bills_bills_bills.mp3",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/.sublime-grunt.cache",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/simple_quiz.sublime-project",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/src/script.js",
+		"/Users/kirkcp/Desktop/mammoth/output.html",
+		"/Users/kirkcp/Desktop/test.json",
+		"/Users/kirkcp/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/kirkcp/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/README.md",
+		"/Users/kirkcp/Documents/interactives/2014/05/simple_quiz/src/styles.scss",
+		"/Users/kirkcp/Downloads/countries.csv",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-04/got_graveyard/htdocs/index.php",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-04/got_graveyard/interactive.sublime-project",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-04/got_graveyard/htdocs/got_graveyard.js",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-04/got_graveyard/htdocs/got_graveyard.coffee",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-04/got_graveyard/htdocs/got_graveyard.scss",
+		"/Users/kirkcp/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/twitter_analysis/TayeDiggs-Montel_Williams.json",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/twitter_analysis/shared.csv",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/twitter_analysis/detailed.json",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-04/novelty_food/htdocs/lib/simpleSlider/css/simple-slider-volume.css",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-04/novelty_food/htdocs/novelty_food.scss",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/goop/goop.sublime-project",
+		"/Users/kirkcp/Desktop/node_practice/index.js",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-03/reincarnation/data_collection/data/1606/1606-10-14.json",
+		"/Applications/MAMP/htdocs/editorial-interactives/14-04/dubliners/htdocs/data.csv",
+		"/Users/kirkcp/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Applications/MAMP/htdocs/editorial-interactives/interactive_server_scripts/scores/addScore.php",
+		"/Applications/MAMP/htdocs/editorial-interactives/13-07/starbucks/htdocs/starbucks.css",
+		"/Users/kirkcp/Documents/Templates/new_interactive/htdocs/droneStrikes.js",
+		"/Users/kirkcp/Documents/Templates/new_interactive/htdocs/index.php",
+		"/Users/kirkcp/Documents/Templates/new_interactive/htdocs/droneStrikes.css",
+		"/Applications/MAMP/htdocs/editorial-interactives/13-02/drones/htdocs/index.php",
+		"/Applications/MAMP/htdocs/editorial-interactives/13-02/drones/htdocs/droneStrikes.js",
+		"/Applications/MAMP/htdocs/editorial-interactives/13-02/slideshow/htdocs/slideshow.js",
+		"/Applications/MAMP/htdocs/editorial-interactives/13-02/slideshow/htdocs/index.php",
+		"/Users/kirkcp/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Applications/MAMP/htdocs/editorial-interactives/13-02/slideshow/htdocs/slideshow.css",
+		"/Applications/MAMP/htdocs/editorial-interactives/13-01/gun-deaths3/htdocs/gun-deaths.js",
+		"/Users/kirkcp/Library/Application Support/Sublime Text 2/Packages/User/Distraction Free.sublime-settings"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"getfriendidsof",
+			"getfriendidsofgroup",
+			"[];\n",
+			"28250356",
+			"twit.get(",
+			"twit",
+			"twitter(",
+			"twit",
+			"getfriendidsofgroup",
+			"getmembersoflist",
+			"scientific american",
+			"outward",
+			"scientific american",
+			"28250356",
+			"getfriendidsofgroup",
+			"johndickerson",
+			"\"SlateWild\",\"SlateOutward\",\"YoffeEmily\",\"achilledplum\",\"SlateGent\",\"BenBlatt\",\"slatecrime\",\"SlateVault\",\"beholdphotos\",\"GunDeaths\",\"alisongriswold\",\"SlateBooks\",\"boerdeng\",\"sarahtrankle\",\"lexiconvalley\",\"abbjmc\",\"FutureTenseNow\",\"LV_Anderson\",\"lilyhnewman\",\"anneapplebaum\",\"EricHolthaus\",\"bittelmethis\",\"slatest\",\"photobomba\",\"WilliamJDobson\",\"browbeat\",\"KenJennings\",\"rebeccaonion\",\"xwaldie\",\"thekibosch\",\"laurahelmuth\",\"SlateVideo\",\"craftingmystyle\",\"dbhaglund\",\"WillOremus\",\"JesseBering\",\"Dahlialithwick\",\"SlateCultFest\",\"_ajmccarthy\",\"BenMathisLilley\",\"mjs_DC\",\"chadAlorenz\",\"saletan\",\"stefanfatsis\",\"JoshVoorhees\",\"PalmerBrian\",\"RosenbergTennis\",\"tomvanderbilt\",\"lowenliu\",\"fmkaplan\",\"stevensonseth\",\"jacobwe\",\"JHWeissmann\",\"JeremyStahl\",\"Dee_Lockett\",\"jack_hamilton\",\"hollyloo\",\"simondoonan\",\"davidplotz\",\"winterjessica\",\"emilybazelon\",\"chrkirk\",\"slateforeign\",\"pankisseskafka\",\"JeffFriedrich\",\"ForrestW\",\"lrsnwlkr\",\"Metlandia\",\"thunderwooddd\",\"HannaRosin\",\"DoubleXMag\",\"dankois\",\"SlateGabfest\",\"bloomerj\",\"thehighsign\",\"library_bandit\",\"jbryanlowder\",\"SlateMoneybox\",\"RachaelBL\",\"justintrevett\",\"saywhatagain\",\"miriamkrule\",\"joshuakeating\",\"DeePhunk\",\"amandahess\",\"andybowers\",\"brooklyn123\",\"libbycopeland\",\"danengber\",\"juliaturner\",\"johndickerson\",\"Slate\",\"AuerbachKeller\",\"mwieg\",\"reihan\",\"jbouie\",\"willapaskin\",\"daveweigel\",\"junethomas\",\"swansburg\",\"abenedikt\",\"pescami\",\"danathan\",\"BadAstronomer\",\"untitledproject\",\"jdickerson\",\"josh_levin\",\"AmandaMarcotte\",\"SlateGist",
+			"followed_by",
+			"collectpeoplebetween",
+			"followed_by",
+			"%score",
+			"somebody_that_",
+			"gotye",
+			"happy",
+			"old show",
+			"rude",
+			"let it go",
+			"problem",
+			"let_it_go",
+			"all_of_me",
+			"fancy",
+			"&#8220;",
+			"&#8221;",
+			"$base-color",
+			"_",
+			"{\n",
+			"”",
+			"“",
+			"’",
+			"</strong><strong> </strong>",
+			"\"",
+			"</a> ",
+			"    ",
+			" </a>",
+			" | | | ",
+			"\n",
+			"\n\n\n\n\n\n\n\n",
+			"\n\n\n\n\n\n\n",
+			"\n\n\n\n\n\n",
+			"\n\n\n\n\n\n\n\n",
+			"\n\n\n\n\n\n\n",
+			"\n",
+			"</a>.\\\" ",
+			", ",
+			"</p>",
+			"<p>",
+			"\"",
+			"\n",
+			"          ",
+			"\n\n\n\n\n",
+			"\n\n\n\n",
+			"\n\n\n",
+			"\n",
+			"</p>",
+			">\n        ",
+			"</p>",
+			"<p>",
+			"\"",
+			"img",
+			"end",
+			"printtitleslide",
+			"updatecounts",
+			"updategravecount",
+			".replace(/\\t/g,'')",
+			".attach",
+			"attach",
+			".attach",
+			"btns_",
+			"target",
+			"btn_img",
+			"popup",
+			"fullwidthelement",
+			"volume",
+			"\"B\"",
+			"\"n\"",
+			"n",
+			"tags",
+			"name",
+			"'",
+			"getcombination",
+			"div",
+			"self",
+			"items",
+			"this",
+			"id",
+			"\\",
+			"addtoerrorfile",
+			"fullWidthElement.attach",
+			"size",
+			"gonextlocation",
+			"on('click'",
+			"this",
+			".click",
+			"popup",
+			"openpopup",
+			"btn_next",
+			"setview",
+			"this.printed_markers",
+			"printed_markers",
+			"printmarker",
+			"removefilters",
+			"italic",
+			"this.story_btns",
+			".story_btns",
+			"story_btns",
+			"storie_btns",
+			"fullwidthelement",
+			"\"city\"",
+			"city",
+			"city:",
+			"script type=",
+			"background:url",
+			"<? fetchCSS(",
+			"fetchcss",
+			"file_get_contents",
+			"console.log",
+			"currentlocation",
+			"loadquestion"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "README.md",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 32.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "blank.sublime-project",
+	"replace":
+	{
+		"height": 60.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"themesong",
+				"src/quizzes/theme_song/theme_song.cson"
+			],
+			[
+				"theme",
+				"src/quizzes/theme_song/theme_song.cson"
+			],
+			[
+				"theme_s",
+				"sound/theme_songs/theme_songs.aup"
+			],
+			[
+				"first_se",
+				"src/quizzes/first_second/first_second.cson"
+			],
+			[
+				"slideshow",
+				"/Applications/MAMP/htdocs/editorial-interactives/13-02/slideshow/htdocs/slideshow.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 193.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
