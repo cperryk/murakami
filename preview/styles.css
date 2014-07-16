@@ -2,7 +2,6 @@
   width: 1012px;
   margin-left: auto;
   margin-right: auto;
-  border-bottom: 1px solid gray;
   height: 600px;
   text-align: center;
   overflow: hidden;
@@ -35,44 +34,45 @@
       right: 100px;
       line-height: 1em; }
   #int .fingers_wrapper {
+    height: 204px;
     z-index: 2;
-    margin-top: 150px;
-    position: relative;
-    display: inline-block;
-    width: 250px;
-    height: 250px; }
+    top: 240px;
+    position: absolute;
+    left: 370px; }
   #int .finger {
     display: none;
     cursor: pointer;
     bottom: 0px;
     position: absolute;
-    width: 50px;
-    height: 250px;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2); }
+    width: 42px;
+    height: 204px;
+    box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1); }
     #int .finger.finger_red {
       left: 0px;
       bottom: 15px;
       background-color: red; }
     #int .finger.finger_blue {
       bottom: 45px;
-      left: 70px;
+      left: 57px;
       background-color: blue; }
     #int .finger.finger_white {
       bottom: 65px;
-      left: 140px;
+      left: 114px;
       background-color: white; }
     #int .finger.finger_black {
       bottom: 45px;
-      left: 210px;
+      left: 171px;
       background-color: black; }
     #int .finger.finger_map {
-      height: 125px;
-      left: 330px;
+      height: 102px;
+      left: 270px;
       bottom: 0px;
       top: auto;
       background-color: yellow;
       transform: rotate(45deg);
       background: url("graphics/map.png"); }
+    #int .finger:active {
+      opacity: 0.9; }
   #int .btn_music {
     cursor: pointer;
     position: absolute;
@@ -97,15 +97,59 @@
     right: 0px;
     display: none;
     background-color: #211F20;
-    text-align: center; }
+    text-align: center;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
   #int .note {
     opacity: 0;
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 25px;
     margin: 15px 15px 15px 0px;
-    border: 1px solid white;
+    border: 5px solid white;
     border-radius: 50%;
     behavior: url(PIE.htc); }
     #int .note:last-child {
       margin-right: 0px; }
+    #int .note.correct {
+      color: white; }
+  #int .int_popup {
+    display: none;
+    color: white;
+    position: absolute;
+    padding: 15px;
+    background-color: #B3B4B8;
+    left: 20px;
+    top: 70px;
+    transform: rotate(-7deg);
+    -ms-transform: rotate(-7deg);
+    /* IE 9 */
+    -webkit-transform: rotate(-7deg);
+    /* Opera, Chrome, and Safari */ }
+    #int .int_popup.black {
+      background-color: black; }
+    #int .int_popup.red {
+      background-color: red; }
+    #int .int_popup.blue {
+      background-color: blue; }
+    #int .int_popup.white {
+      background-color: white; }
+    #int .int_popup.map {
+      background-color: gray; }
+    #int .int_popup .btn_ex {
+      position: absolute;
+      top: 0px;
+      line-height: 100%;
+      right: 5px;
+      cursor: pointer;
+      padding: 0 0 0.5em 0.5em; }
+      #int .int_popup .btn_ex:hover {
+        color: #692325; }
+    #int .int_popup .slide_img {
+      max-width: 300px;
+      max-height: 300px; }

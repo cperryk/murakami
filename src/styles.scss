@@ -2,7 +2,6 @@
 	width:1012px;
 	margin-left:auto;
 	margin-right:auto;
-	border-bottom:1px solid gray;
 	height:600px;
 	text-align:center;
 	overflow: hidden;
@@ -31,16 +30,15 @@
 			line-height: 1em;
 		}
 	}
-	$finger_width: 50px;
-	$finger_spacing: 20px;
-	$finger_height:250px;
+	$finger_width: 42px;
+	$finger_spacing: 15px;
+	$finger_height:204px;
 	.fingers_wrapper{
-		z-index:2;
-		margin-top:150px;
-		position:relative;
-		display: inline-block;
-		width:250px;
 		height:$finger_height;
+		z-index:2;
+		top:240px;
+		position: absolute;
+		left:370px;
 	}
 	.finger{
 		display: none;
@@ -49,7 +47,7 @@
 		position: absolute;
 		width:$finger_width;
 		height:$finger_height;
-		box-shadow: 10px 10px 5px rgba(0,0,0,0.20);
+		box-shadow: 10px 15px 10px rgba(0,0,0,0.10);
 		&.finger_red{
 			left:0px;
 			bottom:15px;
@@ -79,6 +77,9 @@
 			transform:rotate(45deg);
 			background:url('graphics/map.png');
 		}
+		&:active{
+			opacity:0.9;
+		}
 	}
 	.btn_music{
 		cursor:pointer;
@@ -107,18 +108,69 @@
 		display: none;
 		background-color:#211F20;
 		text-align: center;
+		-moz-user-select:-moz-none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;
 	}
 	.note{
 		opacity:0;
 		display: inline-block;
-		width:35px;
-		height:35px;
+		width:30px;
+		height:30px;
+		line-height:30px;
+		font-size:25px;
 		margin:15px 15px 15px 0px;
 		&:last-child{
 			margin-right:0px;
 		}
-		border:1px solid white;
+		border:5px solid white;
 	    border-radius: 50%;
     	behavior: url(PIE.htc);
+    	&.correct{
+    		color:white;
+    	}
+	}
+	.int_popup{
+		display: none;
+		color:white;
+		position:absolute;
+		padding:15px;
+		background-color:#B3B4B8;
+		left:20px;
+		top:70px;
+		transform:rotate(-7deg);
+		-ms-transform:rotate(-7deg); /* IE 9 */
+		-webkit-transform:rotate(-7deg); /* Opera, Chrome, and Safari */
+		&.black{
+			background-color:black;
+		}
+		&.red{
+			background-color:red;
+		}
+		&.blue{
+			background-color:blue;
+		}
+		&.white{
+			background-color:white;
+		}
+		&.map{
+			background-color:gray;
+		}
+		.slide_wrapper{
+
+		}
+		.btn_ex{
+			position:absolute;
+			top:0px;
+			line-height:100%;
+			right:5px;
+			cursor:pointer;
+			padding:0 0 0.5em 0.5em;
+			&:hover{
+				color:#692325
+			}
+		}
+		.slide_img{
+			max-width: 300px;
+			max-height:300px;
+		}
 	}
 }
