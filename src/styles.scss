@@ -1,4 +1,8 @@
 #int{
+	$finger_red:#F21A27;
+	$finger_blue:#0081B5;
+	$finger_white:#FFFDFE;
+	$finger_black:#000000;
 	width:1012px;
 	margin-left:auto;
 	margin-right:auto;
@@ -23,6 +27,7 @@
 		padding:$top_bar_padding;
 		line-height:1em;
 		background-color:#211F20;
+		z-index:2;
 		.right_wrapper{
 			position: absolute;
 			top:$top_bar_padding;
@@ -51,27 +56,42 @@
 		&.finger_red{
 			left:0px;
 			bottom:15px;
-			background-color:red;
+			&:active{
+				bottom:14px;
+			}
+			background-color:$finger_red;
 		}
 		&.finger_blue{
-			bottom:45px;
 			left:(($finger_width+$finger_spacing)*1);
-			background-color:blue;
+			bottom:45px;
+			&:active{
+				bottom:44px;
+			}
+			background-color:$finger_blue;
 		}
 		&.finger_white{
-			bottom:65px;
 			left:(($finger_width+$finger_spacing)*2);
-			background-color:white;
+			bottom:65px;
+			&:active{
+				bottom:64px;
+			}
+			background-color:$finger_white;
 		}
 		&.finger_black{
-			bottom:45px;
 			left:(($finger_width+$finger_spacing)*3);
-			background-color:black;
+			bottom:45px;
+			&:active{
+				bottom:44px;
+			}
+			background-color:$finger_black;
 		}
 		&.finger_map{
-			height:$finger_height*0.5;
 			left:(($finger_width+$finger_spacing)*4)+($finger_width);
 			bottom:0px;
+			&:active{
+				bottom:-1px;
+			}
+			height:$finger_height*0.5;
 			top:auto;
 			background-color:yellow;
 			transform:rotate(45deg);
@@ -84,20 +104,47 @@
 	.btn_music{
 		cursor:pointer;
 		position: absolute;
-		top:60px;
-		right:130px;
-		width:39px;
-		height:39px;
+		top:43px;
+		right:27px;
+		width:50px;
+		height:50px;
 		background:url('graphics/btn_music.png');
+		&.active{
+			background-position:-50px 0px;
+		}
 	}
 	.piano{
 		position:absolute;
-		bottom:-250px;
+		top:-283px;
 		display: none;
-		background:url('graphics/piano.png');
+		background:url('graphics/piano3.png');
 		right:0px;
 		width:1012px;
-		height:250px;
+		height:283px;
+		.piano_overlay{
+			position:absolute;
+			top:0px;
+			display: none;
+			left:0px;
+			&.red{
+				left:383px;
+			}
+			&.blue{
+				left:504px;
+			}
+			&.white{
+				left:564px;
+			}
+			&.black{
+				left:611px;
+			}
+			&.map{
+				left:624px;
+			}
+			&.final{
+				left:205px;
+			}
+		}
 	}
 	.bot{
 		position:absolute;
@@ -121,7 +168,7 @@
 		&:last-child{
 			margin-right:0px;
 		}
-		border:5px solid white;
+		border:2px solid white;
 	    border-radius: 50%;
     	behavior: url(PIE.htc);
     	&.correct{
@@ -140,16 +187,16 @@
 		-ms-transform:rotate(-7deg); /* IE 9 */
 		-webkit-transform:rotate(-7deg); /* Opera, Chrome, and Safari */
 		&.black{
-			background-color:black;
+			background-color:$finger_black;
 		}
 		&.red{
-			background-color:red;
+			background-color:$finger_red;
 		}
 		&.blue{
-			background-color:blue;
+			background-color:$finger_blue;
 		}
 		&.white{
-			background-color:white;
+			background-color:$finger_white;
 		}
 		&.map{
 			background-color:gray;
@@ -170,7 +217,7 @@
 		}
 		.slide_img{
 			max-width: 300px;
-			max-height:300px;
+			max-height:250px;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-$(function(){
+ $(function(){
 var INT_PATH = 'http://localhost:9999/2014/06/murakami/preview/';
 require.config({
 	paths: {
@@ -9,6 +9,7 @@ require.config({
 		imagesLoaded: INT_PATH+'lib/imagesLoaded.min',
 	}
 });
+var FINGER_TYPES = ['red','blue','white','black','map'];
 var NOTE_MAP = {
 	red:'note_e',
 	blue:'note_g',
@@ -19,11 +20,13 @@ var NOTE_MAP = {
 var NOTE_SEQUENCE = ["e","g","a","b","a_sharp","b","g","e"];
 
 function Interactive(container_id){
+	var self = this;
   this.container = $('#'+container_id);
   this
   	.printTopBar()
-  	.printMusicBtn()
-  	.printFingers();
+  	.printFingers(function(){
+			self.printMusicBtn();
+  	});
   this.popup = new Popup(this);
 }
 Interactive.prototype = {
@@ -40,23 +43,22 @@ Interactive.prototype = {
 	},
 	printMusicBtn:function(){
 		var self = this;
-		$('<div>')
+		this.btn_music = $('<div>')
+			.hide()
 			.addClass('btn_music')
 			.appendTo(this.right_wrapper)
+			.fadeIn()
 			.click(function(){
 				if($(this).hasClass('active')){
-					$(this).removeClass('active');
-					self.hidePiano();
-					self.hideBot();
+					self.deactivatePianoView();
 				}
 				else{
-					$(this).addClass('active');
-					self.showPiano();
+					self.activatePianoView();
 				}
 			});
 		return this;
 	},
-	printFingers:function(){
+	printFingers:function(callback){
 		var self = this;
 		var types = ['red','blue','white','black','map'];
 		this.fingers_wrapper = $('<div>')
@@ -77,48 +79,13 @@ Interactive.prototype = {
 				self.fingers[type] = new_finger;
 			},index*200);
 		});
+		setTimeout(callback||null,1000);
 		return this;
 	},
 	fingerClicked:function(type){
 		if(!this.piano_view){
 			this.popup.trigger(type);
 		}
-	},
-	showPiano:function(){
-		var self = this;
-		this.piano_view = true;
-		if(!this.piano){
-			this.piano = $('<div>')
-				.addClass('piano')
-				.appendTo(this.container)
-				.show();
-		}
-		this.piano
-			.css('opacity',0)
-			.animate({
-				'opacity':1,
-				'bottom':0
-			},500,function(){
-				self.showBot(function(){
-					self.addSoundListeners();
-				});
-			});
-		return this;
-	},
-	hidePiano:function(){
-		var self = this;
-		this.piano_view = false;
-		this.piano
-			.animate({
-				'opacity':0,
-				'bottom':-250
-			},500,function(){
-				self.hideBot();
-			});
-		require(['IntSound'],function(IntSound){
-			IntSound.untieButton($('.finger'));
-		});
-		return this;
 	},
 	addSoundListeners:function(){
 		var self = this;
@@ -154,7 +121,13 @@ Interactive.prototype = {
 			self.fingerPlayed(type);
 		}
 	},
+	removeSoundListeners:function(){
+		require(['IntSound'],function(IntSound){
+			IntSound.untieButton($('.finger'));
+		});
+	},
 	fingerPlayed:function(type){
+		var self = this;
 		if(!this.played_notes){
 			this.played_notes = [];
 		}
@@ -174,41 +147,29 @@ Interactive.prototype = {
 				.find('.correct')
 					.removeClass('correct');
 		}
+		this.highlightNote(type);
+	},
+	highlightNote:function(type){
+		var overlay = this.piano_overlays[type];
+		overlay.fadeIn(100,function(){
+			overlay.fadeOut();
+		});
 	},
 	win:function(){
+		var self = this;
 		this.puzzle_complete = true;
 		$('.finger').unbind('click.piano');
 		require(['IntSound'],function(IntSound){
-			IntSound.untieButton($('.finger'));
+			IntSound
+				.untieButton($('.finger'));
 		});
-	},
-	showBot:function(callback){
-		var self = this;
-		var print_notes = false;
-		if(!this.bot){
-			this.bot = $('<div>')
-				.addClass('bot')
-				.appendTo(this.container);
-			print_notes = true;
-		}
-		this.bot
-			.fadeIn()
-			.animate({
-				'opacity':1,
-				'bottom':0
-			},300,function(){
-				if(print_notes){
-					self.printNotes(callback);
-				}
-				else{
-					if(callback){
-						callback();
-					}
-				}
+		setTimeout(function(){
+			console.log('go');
+			require(['IntSound'],function(IntSound){
+				IntSound.playSound('sound/','note_b_1');
 			});
-	},
-	hideBot:function(){
-		this.bot.fadeOut();
+			self.highlightNote('final');
+		},1000);
 	},
 	printNotes:function(callback){
 		var self = this;
@@ -243,11 +204,111 @@ Interactive.prototype = {
 				}
 			});
 	},
-	raiseFingers:function(){
+	raiseFingers:function(callback){
+		console.log('raising fingers');
 		this.fingers_wrapper
 			.animate({
 				'top':240
+			},500,function(){
+				if(callback){
+					callback();
+				}
+			});
+	},
+	activatePianoView:function(){
+		var self = this;
+		this.addSoundListeners();
+		this.piano_view = true;
+		this.popup
+			.hide()
+			.disable();
+		this.btn_music.addClass('active');
+		this.showPiano();
+		this.showBot();
+	},
+	deactivatePianoView:function(){
+		this.removeSoundListeners();
+		this.btn_music.removeClass('active');
+		this.hidePiano();
+		this.hideBot();
+		this.fingers_wrapper.animate({
+			'top':240
+		},500);
+		this.popup.enable();
+	},
+	showPiano:function(){
+		var self = this;
+		this.fingers_wrapper
+			.animate({
+				'top':300
 			},500);
+		if(!this.piano){
+			(function printPiano(){
+				self.piano = $('<div>')
+					.addClass('piano')
+					.appendTo(self.container)
+					.show();
+			}());
+			(function printOverlays(){
+				self.piano_overlays = {};
+				var types = FINGER_TYPES.slice(0,FINGER_TYPES.length);
+				types.push('final');
+				types.forEach(function(finger_type){
+					self.piano_overlays[finger_type] = $('<img>')
+						.attr('src',INT_PATH+'graphics/pianokey_'+finger_type+'.png')
+						.addClass('piano_overlay')
+						.addClass(finger_type)
+						.appendTo(self.piano);
+				});
+			}());
+		}
+		this.piano
+			.css('opacity',0)
+			.animate({
+				'opacity':1,
+				'top':self.top_bar_wrapper.outerHeight()
+			},500);
+		return this;
+	},
+	hidePiano:function(){
+		var self = this;
+		this.piano_view = false;
+		this.piano
+			.animate({
+				'opacity':0,
+				'bottom':-250
+			},500,function(){
+				self.hideBot();
+			});
+		return this;
+	},
+	showBot:function(callback){
+		var self = this;
+		var print_notes = false;
+		if(!this.bot){
+			this.bot = $('<div>')
+				.addClass('bot')
+				.appendTo(this.container);
+			print_notes = true;
+		}
+		this.bot
+			.fadeIn()
+			.animate({
+				'opacity':1,
+				'bottom':0
+			},300,function(){
+				if(print_notes){
+					self.printNotes(callback);
+				}
+				else{
+					if(callback){
+						callback();
+					}
+				}
+			});
+	},
+	hideBot:function(){
+		this.bot.fadeOut();
 	}
 };
 function Popup(parent){
@@ -261,7 +322,7 @@ function Popup(parent){
 		.html('x')
 		.appendTo(this.container)
 		.click(function(){
-			self.hide();
+			self.hide(true);
 		});
 }
 Popup.prototype = {
@@ -289,6 +350,9 @@ Popup.prototype = {
 				.end()
 			.append(wrapper);
 		require(['imagesLoaded'],function(imagesLoaded){
+			if(self.disabled){
+				return;
+			}
 			self.container.imagesLoaded(function(){
 				self.container.fadeIn();
 				self.orient(type);
@@ -362,9 +426,20 @@ Popup.prototype = {
 		}
 		return wrapper;
 	},
-	hide:function(){
+	hide:function(raiseFingers){
 		this.container.fadeOut();
-		this.par.raiseFingers();
+		if(raiseFingers){
+			this.par.raiseFingers();
+		}
+		return this;
+	},
+	disable:function(){
+		this.disabled = true;
+		return this;
+	},
+	enable:function(){
+		this.disabled = false;
+		return this;
 	}
 
 };

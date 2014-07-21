@@ -15,38 +15,28 @@ define(function(){
         createjs.Sound.alternateExtensions = ["ogg"];
         module.initialized = true;
       }
+      return module;
     },
     tieToButton:function(btn,sound_directory,sound_id,opts){
       btn.on('click.intSound',function(){
         if(!btn.hasClass('playing_sound') || (opts && opts.behavior === 'key')) {
           if(module.loaded_sounds[sound_id]===undefined){
-            loadSound();
+            btn.addClass('loading');
+            module.loadSound(sound_directory,sound_id,function(){
+              btn
+                .removeClass('loading')
+                .addClass('playing_sound');
+              module.playSound(sound_directory,sound_id, endSound);
+            });
           }
           else{
-            playit();
+            module.playSound(sound_directory,sound_id);
           }
         }
         else{
           if(opts && opts.behavior !== 'key'){
             stopSound();
           }
-        }
-        function loadSound(){
-          var sound_path = sound_directory+sound_id+'.mp3';
-          btn.addClass('loading');
-          createjs.Sound.addEventListener("fileload",soundLoaded);
-          createjs.Sound.registerSound(sound_path,sound_id,10);
-        }
-        function soundLoaded(){
-          module.loaded_sounds[sound_id] = true;
-          playit();
-          createjs.Sound.removeEventListener("fileload",soundLoaded);
-        }
-        function playit(){
-          btn.removeClass('loading');
-          btn.addClass('playing_sound');
-          var instance = createjs.Sound.play(sound_id);
-          instance.addEventListener("complete",endSound);
         }
         function stopSound(){
           $('.playing_sound').removeClass('playing_sound');
@@ -57,13 +47,45 @@ define(function(){
           btn.removeClass('playing_sound');
         }
       });
+      return module;
+    },
+    playSound:function(sound_directory, sound_id, callback){
+      console.log('playing sound: ',sound_directory,sound_id);
+      if(module.loaded_sounds[sound_id]===undefined){
+        module.loadSound(sound_directory, sound_id, function(){
+          module.playSound(sound_directory,sound_id,callback);
+        });
+      }
+      else{
+        var instance = createjs.Sound.play(sound_id);
+        instance.addEventListener("complete",function(){
+          if(callback){
+            callback();
+          }
+        });
+      }
+    },
+    loadSound:function(sound_directory, sound_id, callback){
+      var sound_path = sound_directory+sound_id+'.mp3';
+      createjs.Sound.addEventListener("fileload",soundLoaded);
+      createjs.Sound.registerSound(sound_path,sound_id,10);
+      function soundLoaded(){
+        module.loaded_sounds[sound_id] = true;
+        createjs.Sound.removeEventListener("fileload",soundLoaded);
+        if(callback){
+          callback();
+        }
+      }
+      return module;
     },
     stopAll:function(){
       createjs.Sound.stop();
       $('.playing_sound').removeClass('playing_sound');
+      return module;
     },
     untieButton:function(btn){
       btn.unbind('click.intSound');
+      return module;
     }
   };
   return module;

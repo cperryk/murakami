@@ -27,7 +27,8 @@
     color: #F9F7F8;
     padding: 0.7em;
     line-height: 1em;
-    background-color: #211F20; }
+    background-color: #211F20;
+    z-index: 2; }
     #int .top_bar .right_wrapper {
       position: absolute;
       top: 0.7em;
@@ -50,45 +51,74 @@
     #int .finger.finger_red {
       left: 0px;
       bottom: 15px;
-      background-color: red; }
+      background-color: #f21a27; }
+      #int .finger.finger_red:active {
+        bottom: 14px; }
     #int .finger.finger_blue {
-      bottom: 45px;
       left: 57px;
-      background-color: blue; }
-    #int .finger.finger_white {
-      bottom: 65px;
-      left: 114px;
-      background-color: white; }
-    #int .finger.finger_black {
       bottom: 45px;
+      background-color: #0081b5; }
+      #int .finger.finger_blue:active {
+        bottom: 44px; }
+    #int .finger.finger_white {
+      left: 114px;
+      bottom: 65px;
+      background-color: #fffdfe; }
+      #int .finger.finger_white:active {
+        bottom: 64px; }
+    #int .finger.finger_black {
       left: 171px;
+      bottom: 45px;
       background-color: black; }
+      #int .finger.finger_black:active {
+        bottom: 44px; }
     #int .finger.finger_map {
-      height: 102px;
       left: 270px;
       bottom: 0px;
+      height: 102px;
       top: auto;
       background-color: yellow;
       transform: rotate(45deg);
       background: url("graphics/map.png"); }
+      #int .finger.finger_map:active {
+        bottom: -1px; }
     #int .finger:active {
       opacity: 0.9; }
   #int .btn_music {
     cursor: pointer;
     position: absolute;
-    top: 60px;
-    right: 130px;
-    width: 39px;
-    height: 39px;
+    top: 43px;
+    right: 27px;
+    width: 50px;
+    height: 50px;
     background: url("graphics/btn_music.png"); }
+    #int .btn_music.active {
+      background-position: -50px 0px; }
   #int .piano {
     position: absolute;
-    bottom: -250px;
+    top: -283px;
     display: none;
-    background: url("graphics/piano.png");
+    background: url("graphics/piano3.png");
     right: 0px;
     width: 1012px;
-    height: 250px; }
+    height: 283px; }
+    #int .piano .piano_overlay {
+      position: absolute;
+      top: 0px;
+      display: none;
+      left: 0px; }
+      #int .piano .piano_overlay.red {
+        left: 383px; }
+      #int .piano .piano_overlay.blue {
+        left: 504px; }
+      #int .piano .piano_overlay.white {
+        left: 564px; }
+      #int .piano .piano_overlay.black {
+        left: 611px; }
+      #int .piano .piano_overlay.map {
+        left: 624px; }
+      #int .piano .piano_overlay.final {
+        left: 205px; }
   #int .bot {
     position: absolute;
     height: 65px;
@@ -111,7 +141,7 @@
     line-height: 30px;
     font-size: 25px;
     margin: 15px 15px 15px 0px;
-    border: 5px solid white;
+    border: 2px solid white;
     border-radius: 50%;
     behavior: url(PIE.htc); }
     #int .note:last-child {
@@ -134,11 +164,11 @@
     #int .int_popup.black {
       background-color: black; }
     #int .int_popup.red {
-      background-color: red; }
+      background-color: #f21a27; }
     #int .int_popup.blue {
-      background-color: blue; }
+      background-color: #0081b5; }
     #int .int_popup.white {
-      background-color: white; }
+      background-color: #fffdfe; }
     #int .int_popup.map {
       background-color: gray; }
     #int .int_popup .btn_ex {
@@ -152,4 +182,4 @@
         color: #692325; }
     #int .int_popup .slide_img {
       max-width: 300px;
-      max-height: 300px; }
+      max-height: 250px; }
