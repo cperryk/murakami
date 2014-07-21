@@ -11,10 +11,16 @@
 		{
 			img:'ao_lexus.jpg'
 		}
+		{
+			img:'rugby.jpg'
+		}
 	]
 	white:[
 		{
 			img:'SHIRO_LeMalduPays.jpg'
+		}
+		{
+			img:'inTheCorner.jpg'
 		}
 	]
 	black:[
@@ -37,6 +43,9 @@
 		}
 		{
 			img:'TSUKURU_recordplayer.gif'
+		}
+		{
+			img:'birdswithbeaks.jpg'
 		}
 	]
 }

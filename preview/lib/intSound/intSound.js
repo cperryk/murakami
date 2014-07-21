@@ -5,17 +5,46 @@ Abstraction layer over SoundJS: Download SoundJS: http://www.createjs.com/#!/Sou
 By Chris Kirk. www.cperryk.com
 
 */
-define(function(){
+define(['SoundJS'],function(){
   var module = {
     loaded_sounds:{},
-    initialize:function(directory){
-      if(!module.initialized){
+    initialize:function(directory,callback){
+      if(module.initialized){
+        if(callback){
+          callback(module);
+        }
+        return;
+      }
+      if(getIEversion()===8){
+        require(['SJS_FlashPlugin','SJS_SwfObject'],intitializeForIE);
+      }
+      else{
+        module.initialized = true;
+        if(callback){
+          callback(module);
+        }
+        return;
+      }
+      function getIEversion(){
+        var undef,
+            v = 3,
+            div = document.createElement('div'),
+            all = div.getElementsByTagName('i');
+        while (
+            div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i>< ![endif]-->',
+            all[0]
+        );
+        return v > 4 ? v : undef;
+      }
+      function intitializeForIE(FlashPlugin,SwfObject){
         createjs.FlashPlugin.swfPath = directory+'/';
         createjs.Sound.registerPlugins([createjs.WebAudioPlugin, createjs.HTMLAudioPlugin, createjs.FlashPlugin]);
         createjs.Sound.alternateExtensions = ["ogg"];
         module.initialized = true;
+        if(callback){
+          callback(module);
+        }
       }
-      return module;
     },
     tieToButton:function(btn,sound_directory,sound_id,opts){
       btn.on('click.intSound',function(){
@@ -50,7 +79,6 @@ define(function(){
       return module;
     },
     playSound:function(sound_directory, sound_id, callback){
-      console.log('playing sound: ',sound_directory,sound_id);
       if(module.loaded_sounds[sound_id]===undefined){
         module.loadSound(sound_directory, sound_id, function(){
           module.playSound(sound_directory,sound_id,callback);

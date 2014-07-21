@@ -1,4 +1,4 @@
- $(function(){
+$(function(){
 var INT_PATH = 'http://localhost:9999/2014/06/murakami/preview/';
 require.config({
 	paths: {
@@ -31,15 +31,22 @@ function Interactive(container_id){
 }
 Interactive.prototype = {
 	printTopBar:function(){
+		var self = this;
 		var wrapper = $('<div>')
 			.addClass('top_bar')
 			.html('Please turn your sound up');
 		this.right_wrapper = $('<div>')
 			.addClass('right_wrapper')
 			.html('mute sound')
-			.appendTo(wrapper);
+			.appendTo(wrapper)
+			.click(function(){
+				self.muteSound();
+			});
 		this.top_bar_wrapper = wrapper.appendTo(this.container);
 		return this;
+	},
+	muteSound:function(){
+		this.sound_muted = true;
 	},
 	printMusicBtn:function(){
 		var self = this;
@@ -79,7 +86,7 @@ Interactive.prototype = {
 				self.fingers[type] = new_finger;
 			},index*200);
 		});
-		setTimeout(callback||null,1000);
+		setTimeout(callback||null,400);
 		return this;
 	},
 	fingerClicked:function(type){
@@ -89,17 +96,9 @@ Interactive.prototype = {
 	},
 	addSoundListeners:function(){
 		var self = this;
-		if(getIEversion()===8){
-			require(['SoundJS','SJS_FlashPlugin','SJS_SwfObject','IntSound'],function(SoundJS,FlashPlugin,SwfObject,IntSound){
-				IntSound.initialize(INT_PATH+'lib/soundjs');
-					go(IntSound);
-			});
-		}
-		else{
-			require(['SoundJS','IntSound'],function(SoundJS,IntSound){
-				go(IntSound);
-			});
-		}
+		require(['IntSound'],function(IntSound){
+			IntSound.initialize(INT_PATH+'lib/soundjs',go);
+		});
 		function go(IntSound){
 			for(var type in self.fingers){
 				if(!self.puzzle_complete){
@@ -122,8 +121,10 @@ Interactive.prototype = {
 		}
 	},
 	removeSoundListeners:function(){
+		var fingers = $('.finger')
+			.unbind('click.piano');
 		require(['IntSound'],function(IntSound){
-			IntSound.untieButton($('.finger'));
+			IntSound.untieButton(fingers);
 		});
 	},
 	fingerPlayed:function(type){
@@ -164,7 +165,6 @@ Interactive.prototype = {
 				.untieButton($('.finger'));
 		});
 		setTimeout(function(){
-			console.log('go');
 			require(['IntSound'],function(IntSound){
 				IntSound.playSound('sound/','note_b_1');
 			});
@@ -197,7 +197,7 @@ Interactive.prototype = {
 	lowerFingers:function(callback){
 		this.fingers_wrapper
 			.animate({
-				'top':400
+				'margin-top':300
 			},500,function(){
 				if(callback){
 					callback();
@@ -205,10 +205,9 @@ Interactive.prototype = {
 			});
 	},
 	raiseFingers:function(callback){
-		console.log('raising fingers');
 		this.fingers_wrapper
 			.animate({
-				'top':240
+				'margin-top':240
 			},500,function(){
 				if(callback){
 					callback();
@@ -231,16 +230,13 @@ Interactive.prototype = {
 		this.btn_music.removeClass('active');
 		this.hidePiano();
 		this.hideBot();
-		this.fingers_wrapper.animate({
-			'top':240
-		},500);
 		this.popup.enable();
 	},
 	showPiano:function(){
 		var self = this;
 		this.fingers_wrapper
 			.animate({
-				'top':300
+				'margin-top':210
 			},500);
 		if(!this.piano){
 			(function printPiano(){
@@ -251,6 +247,11 @@ Interactive.prototype = {
 			}());
 			(function printOverlays(){
 				self.piano_overlays = {};
+				if(!self.overlay_wrapper){
+					self.overlay_wrapper = $('<div>')
+						.addClass('overlay_wrapper')
+						.appendTo(self.fingers_wrapper);
+				}
 				var types = FINGER_TYPES.slice(0,FINGER_TYPES.length);
 				types.push('final');
 				types.forEach(function(finger_type){
@@ -258,7 +259,7 @@ Interactive.prototype = {
 						.attr('src',INT_PATH+'graphics/pianokey_'+finger_type+'.png')
 						.addClass('piano_overlay')
 						.addClass(finger_type)
-						.appendTo(self.piano);
+						.appendTo(self.overlay_wrapper);
 				});
 			}());
 		}
@@ -280,6 +281,9 @@ Interactive.prototype = {
 			},500,function(){
 				self.hideBot();
 			});
+		this.fingers_wrapper.animate({
+			'margin-top':140
+		},500);
 		return this;
 	},
 	showBot:function(callback){
@@ -310,6 +314,15 @@ Interactive.prototype = {
 	hideBot:function(){
 		this.bot.fadeOut();
 	}
+	// scrollListen:function(){
+	// 	var container_scroll_top = this.container.scrollTop();
+	// 	$(window).scroll(function(){
+	// 		var window_scroll_top = $(window).scrollTop();
+	// 		if(window_scroll_top >= container_scroll_top &&
+	// 			window_scroll_top <= container_scroll_top + 
+	// 		if(scroll_top>=self.container.scrollTop() || 
+	// 	});
+	// }
 };
 function Popup(parent){
 	var self = this;
@@ -374,10 +387,9 @@ Popup.prototype = {
 			self.container.css('left',left);
 		}());
 		(function orientTop(){
-			var finger_top = finger.position().top;
+			var finger_top = finger.position().top + fingers_wrapper.position().top;
 			var fingers_wrapper_top = fingers_wrapper.position().top;
-			var total_top = finger_top + fingers_wrapper_top;
-			var top = total_top - self.container.outerHeight() - 20;
+			var top = finger_top + fingers_wrapper_top;
 			self.container
 				.css('top',top);
 		}());
@@ -417,11 +429,17 @@ Popup.prototype = {
 	getHTML:function(content,type){
 		var wrapper = $('<div>')
 			.addClass('slide_wrapper');
+		var table = $('<table>')
+			.appendTo(wrapper);
+		var row = $('<tr>')
+			.appendTo(table);
+		var cell = $('<td>')
+			.appendTo(row);
 		if(content.img){
 			$('<img>')
 				.addClass('slide_img')
 				.attr('src','graphics/'+type+'/'+content.img)
-				.appendTo(wrapper)
+				.appendTo(cell)
 				.fadeIn();
 		}
 		return wrapper;
@@ -443,17 +461,6 @@ Popup.prototype = {
 	}
 
 };
-function getIEversion(){
-	var undef,
-			v = 3,
-			div = document.createElement('div'),
-			all = div.getElementsByTagName('i');
-	while (
-			div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i>< ![endif]-->',
-			all[0]
-	);
-	return v > 4 ? v : undef;
-}
 
 var my_interactive = new Interactive('int');
 
