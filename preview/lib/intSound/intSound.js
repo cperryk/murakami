@@ -46,31 +46,32 @@ define(['SoundJS'],function(){
         }
       }
     },
-    tieToButton:function(btn,sound_directory,sound_id,opts){
+    tieToButton:function(btn,sound_directory,sound_id,conf){
       btn.on('click.intSound',function(){
-        if(!btn.hasClass('playing_sound') || (opts && opts.behavior === 'key')) {
+        if(conf && conf.behavior === 'key'){
+          playIt();
+          return;
+        }
+        if($(this).hasClass('playing_sound')){
+          module.stopAll();
+          return;
+        }
+        module.stopAll();
+        playIt();
+        function playIt(){
           if(module.loaded_sounds[sound_id]===undefined){
             btn.addClass('loading');
             module.loadSound(sound_directory,sound_id,function(){
               btn
                 .removeClass('loading')
                 .addClass('playing_sound');
-              module.playSound(sound_directory,sound_id, endSound);
+              module.playSound(sound_directory, sound_id, endSound);
             });
           }
           else{
-            module.playSound(sound_directory,sound_id);
+            btn.addClass('playing_sound');
+            module.playSound(sound_directory, sound_id, endSound);
           }
-        }
-        else{
-          if(opts && opts.behavior !== 'key'){
-            stopSound();
-          }
-        }
-        function stopSound(){
-          $('.playing_sound').removeClass('playing_sound');
-          createjs.Sound.stop();
-          endSound();
         }
         function endSound(){
           btn.removeClass('playing_sound');

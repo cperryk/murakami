@@ -28,6 +28,7 @@ function Interactive(container_id){
 			self.printMusicBtn();
   	});
   this.popup = new Popup(this);
+  //this.showSolution();
 }
 Interactive.prototype = {
 	printTopBar:function(){
@@ -86,7 +87,7 @@ Interactive.prototype = {
 				self.fingers[type] = new_finger;
 			},index*200);
 		});
-		setTimeout(callback||null,400);
+		setTimeout(callback||null,200*5);
 		return this;
 	},
 	fingerClicked:function(type){
@@ -170,6 +171,9 @@ Interactive.prototype = {
 			});
 			self.highlightNote('final');
 		},1000);
+		setTimeout(function(){
+			self.showSolution();
+		},1500);
 	},
 	printNotes:function(callback){
 		var self = this;
@@ -313,6 +317,57 @@ Interactive.prototype = {
 	},
 	hideBot:function(){
 		this.bot.fadeOut();
+	},
+	getSolution:function(callback){
+		var self = this;
+		if(!this.solution){
+			$.getJSON('solution.json',function(data){
+				self.solution = data.solution;
+				callback(data.solution);
+			});
+		}
+		else{
+			callback(this.solution);
+		}
+	},
+	showSolution:function(){
+		console.log('showing solution');
+		var self = this;
+		this.getSolution(function(content){
+			var solution_wrapper = $('<div>')
+				.addClass('solution_wrapper')
+				.html(content)
+				.appendTo(self.container);
+			var solution_title = $('<p>')
+				.addClass('solution_title')
+				.html('Unlocked Content')
+				.prependTo(solution_wrapper);
+			var btn_ex = $('<div>')
+				.addClass('btn_ex')
+				.appendTo(solution_wrapper)
+				.html('X')
+				.click(function(){
+					self.hideSolution();
+					self.resetPuzzle();
+				});
+			self.solution_wrapper  = solution_wrapper.fadeIn();
+		});
+	},
+	hideSolution:function(){
+		var self = this;
+		if(this.solution_wrapper){
+			this.solution_wrapper.fadeOut(function(){
+				self.solution_wrapper.remove();
+			});
+		}
+	},
+	resetPuzzle:function(){
+		this.container.find('.note.correct')
+			.removeClass('correct');
+		this.played_notes = [];
+		this.puzzle_complete = false;
+		this.addSoundListeners();
+
 	}
 	// scrollListen:function(){
 	// 	var container_scroll_top = this.container.scrollTop();
@@ -355,8 +410,18 @@ Popup.prototype = {
 	show:function(content,type,wrapper){
 		var self = this;
 		self.container
-			.removeClass('red blue white black map')
+			.removeClass('red blue white black map img text text_img')
 			.addClass(type);
+		console.log(content);
+		if(content.img){
+			self.container.addClass('img');
+		}
+		if(content.text){
+			self.container.addClass('text');
+		}
+		if(content.text_img){
+			self.container.addClass('text_img');
+		}
 		self.container
 			.find('.slide_wrapper')
 				.remove()
@@ -435,10 +500,17 @@ Popup.prototype = {
 			.appendTo(table);
 		var cell = $('<td>')
 			.appendTo(row);
-		if(content.img){
+		if(content.img || content.text_img){
 			$('<img>')
 				.addClass('slide_img')
-				.attr('src','graphics/'+type+'/'+content.img)
+				.attr('src','graphics/'+type+'/'+(content.img||content.text_img))
+				.appendTo(cell)
+				.fadeIn();
+		}
+		if(content.text){
+			$('<div>')
+				.addClass('slide_text')
+				.html(content.text)
 				.appendTo(cell)
 				.fadeIn();
 		}

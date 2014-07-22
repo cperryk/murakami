@@ -1,6 +1,25 @@
 {
 	red:[
 		{
+			text:"
+				<p><span class=\"text_red\">Aka</span> seemed lost in thought. \"Tsukuru,\" he finally
+said, \"I have a favor to ask.\"</p>
+	      <p>\"What kind?\"</p>
+	      <p>\"I have something I want to tell you. A confession,
+	you might call it, that I've never told anybody before.\"</p>
+			"
+		}
+		{
+			text:"
+					<p>The truth sometimes reminds me of a city buried in
+					sand,\" <span class=\"text_red\">Aka</span> said. \"As time passes, sometimes the sand
+					piles up even thicker, and sometimes it's blown away
+					and what's below is revealed. In this case it's definitely
+					the latter. Whether the misunderstanding is cleared up
+					or it isn't, you aren't the type of person to do something</p>
+					"
+		}
+		{
 			img:'aka_cards.jpg'
 		}
 		{
@@ -14,6 +33,15 @@
 		{
 			img:'rugby.jpg'
 		}
+		{
+			text:"
+        <p><span class=\"text_map\">Tsukuru</span> remained silent, unable to find the right
+        reply.</p>
+				<p>\"You know, in a sense we were a perfect combina-
+				tion, the five of us. Like five fingers.\" <span class=\"text_blue\">Ao</span> raised his right
+				hand and spread his thick fingers, \"I still think that. The</p>
+				"
+		}
 	]
 	white:[
 		{
@@ -21,6 +49,22 @@
 		}
 		{
 			img:'inTheCorner.jpg'
+		}
+		{
+			text:"
+				<p><em>wrong</em> with her then. She had a lot of musical talent.
+				The kind of beautiful music she played blew us away,
+				but unfortunately she demanded more from herself.</p>
+				"
+		}
+		{
+			text:"
+				<p>listen to.\"</p>
+        <p>\"<span class=\"text_white\">Yuzu</span> played this piece so beautifully. She put so
+				much feeling into it.</p>
+        <p>\"She really did. She was very good at pieces this
+				length. In longer pieces she sort of ran out of energy</p>
+			"
 		}
 	]
 	black:[
@@ -30,8 +74,29 @@
 		{
 			img:'KURO_pot.jpg'
 		}
+		{
+			text:"
+				<p>that scene. It was a strange thing.</p>
+        <p>\"Farewell <span class=\"text_map\">Tsukuru Tazaki</span>. Have a safe trip home,\"
+				<span class=\"text_black\">Eri</span> said as they said goodbye. \"Don't let the bad elves
+				get you.\"</p>
+				<p>\"Bad elves?\"</p>
+				<p><span class=\"text_black\">Eri</span>'s eyes narrowed, her lips curling mischievously
+				like in the old days. \"It's a saying we use a lot here.</p>
+			"
+		}
 	]
 	map:[
+		{
+			text:"
+				<p>Sometimes <span class=\"text_map\">Tsukuru</span> couldn't understand why he was
+				included in <span class=\"text_red\">their</span> <span class=\"text_blue\">group</span> <span class=\"text_white\">of</span> <span class=\"text_black\">five</span>. Did the others really need
+				him? Wouldn't they be able to relax and have a better
+				time if he weren't there? Maybe they just hadn't realized
+				it yet, and it was only a matter of time before they did?
+				The more he pondered this dilemma, the less he under-</p>
+			"
+		}
 		{
 			img:'TSUKURU_signature.jpg'
 		}
@@ -46,6 +111,15 @@
 		}
 		{
 			img:'birdswithbeaks.jpg'
+		}
+		{
+			text:"
+			<p>\"<a target=\"_blank\" href=\"http://en.wikipedia.org/wiki/Années_de_pèlerinage%23Premi.C3.A8re_ann.C3.A9e:_Suisse\">Le mal du pays</a>.\" The quiet, melancholy music
+			gradually gave shape to the undefined sadness envelop-
+			ing his heart, as if countless microscopic bits of pol-
+			len adhered to an invisible being concealed in the air,
+			ultimately revealing, slowly and silently, its shape. This</p>
+			"
 		}
 	]
 }

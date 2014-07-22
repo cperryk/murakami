@@ -25,6 +25,12 @@ $finger_height:204px;
 @mixin no_select{
 	-moz-user-select:-moz-none;-khtml-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;
 }
+@mixin paper_border{
+	border-width: 27px 0 25px 0;
+	border-image: url("graphics/paper/border5.png") 25 0 20 0 repeat;
+	background: url("graphics/paper/mid5.png") center;
+	background-clip: padding-box;
+}
 
 #int{
 	max-width: 1012px;
@@ -221,52 +227,125 @@ $finger_height:204px;
 		display: none;
 		color:white;
 		position:absolute;
-		padding:15px;
-		background-color:#B3B4B8;
+		padding:0px 15px;
 		left:20px;
 		top:70px;
 		table{
 			width:100%;
 			height:100%;
 		}
-		&.black{
-			background-color:$finger_black;
-			@include rotate(3deg);
-		}
-		&.red{
-			@include rotate(-7deg);
-			background-color:$finger_red;
-		}
-		&.blue{
-			@include rotate(-3deg);
-			background-color:$finger_blue;
-		}
-		&.white{
-			background-color:$finger_white;
-			.btn_ex{
-				color:black;
+		&.img{
+			&.black{
+				background-color:$finger_black;
+				@include rotate(3deg);
+			}
+			&.red{
+				background-color:$finger_red;
+				@include rotate(-7deg);
+			}
+			&.blue{
+				background-color:$finger_blue;
+				@include rotate(-3deg);
+			}
+			&.white{
+				background-color:$finger_white;
+				.btn_ex{
+					color:black;
+				}
+			}
+			&.map{
+				background-color:gray;
 			}
 		}
-		&.map{
-			background-color:gray;
+		&.text{
+			color: black;
+			@include paper_border();
+		}
+		&.text_image{
+			background:none !important;
 		}
 		.slide_wrapper{
 			height:100%;
 		}
-		.btn_ex{
-			position:absolute;
-			top:0px;
-			line-height:100%;
-			right:5px;
-			cursor:pointer;
-			padding:0 0 0.5em 0.5em;
-			&:hover{
-				color:#692325
-			}
-		}
 		.slide_img{
 			max-width: 350px;
 			max-height:250px;
+			padding:15px 0px;
+		}
+		p{
+			color:#141414;
+			max-width:350px;
+			max-height:250px;
+			text-align:left;
+			line-height:1.4;
+			margin:0.75em 0;
+			&:first-child{
+				margin-top:0;
+			}
+			&:last-child{
+				margin-bottom:0;
+			}
+			span{
+				padding:0 .3em;
+				font-size:0.9em;
+			}
+			.text_red{
+				background-color:$finger_red;
+				color:white;
+			}
+			.text_blue{
+				background-color:$finger_blue;
+				color:white;
+			}
+			.text_white{
+				outline:1px solid #e3e3e3;
+			}
+			.text_black{
+				background-color:black;
+				color:white;
+			}
+			.text_map{
+				background:url('graphics/map_faint.png');
+			}
+		}
+	}
+	.solution_wrapper{
+		@include paper_border;
+		width:350px;
+		padding:0 1em;
+		position:absolute;
+		margin-left:auto;
+		margin-right:auto;
+		z-index:4;
+		left:0;
+		right:0;
+		top:50px;
+		text-align: left;
+		height:80%;
+		overflow: scroll;
+		display: none;
+		p{
+			line-height:1.4;
+		}
+		.solution_title{
+			text-align:center;
+			font-family:'sl-ApresBold';
+			text-transform: uppercase;
+		}
+		.btn_ex{
+			top:5px;
+			color:black;
+		}
+	}
+	.btn_ex{
+		position:absolute;
+		top:0px;
+		line-height:100%;
+		right:5px;
+		cursor:pointer;
+		padding:0 0 0.5em 0.5em;
+		&:hover{
+			color:#692325
 		}
 	}
 }
