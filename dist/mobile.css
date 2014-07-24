@@ -1,0 +1,21 @@
+#int {
+  width: 100%; }
+  #int .int_popup {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0px !important;
+    top: 0px !important;
+    z-index: 3;
+    padding: 0; }
+    #int .int_popup.img.black, #int .int_popup.img.red, #int .int_popup.img.map, #int .int_popup.img.blue, #int .int_popup.img.white {
+      transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg); }
+  #int .btn_ex {
+    font-size: 2em; }
+  #int .int_popup_wrapper {
+    width: 100%; }
+  #int .int_popup.text {
+    border: none; }
+  #int .btn_mute {
+    display: none; }

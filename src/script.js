@@ -28,7 +28,6 @@ function Interactive(container_id){
 			self.printMusicBtn();
   	});
   this.popup = new Popup(this);
-  //this.showSolution();
 }
 Interactive.prototype = {
 	printTopBar:function(){
@@ -38,11 +37,14 @@ Interactive.prototype = {
 			.html('Please turn your sound up');
 		this.right_wrapper = $('<div>')
 			.addClass('right_wrapper')
-			.html('mute sound')
 			.appendTo(wrapper)
 			.click(function(){
 				self.muteSound();
 			});
+		$('<span>')
+			.addClass('btn_mute')
+			.html('mute sound')
+			.appendTo(this.right_wrapper);
 		this.top_bar_wrapper = wrapper.appendTo(this.container);
 		return this;
 	},
@@ -281,7 +283,7 @@ Interactive.prototype = {
 		this.piano
 			.animate({
 				'opacity':0,
-				'bottom':-250
+				'top':-250
 			},500,function(){
 				self.hideBot();
 			});
@@ -331,16 +333,17 @@ Interactive.prototype = {
 		}
 	},
 	showSolution:function(){
-		console.log('showing solution');
 		var self = this;
 		this.getSolution(function(content){
 			var solution_wrapper = $('<div>')
 				.addClass('solution_wrapper')
-				.html(content)
 				.appendTo(self.container);
+			var book_wrapper  = $('<div>')
+				.addClass('book_wrapper')
+				.html(content)
+				.appendTo(solution_wrapper);
 			var solution_title = $('<p>')
 				.addClass('solution_title')
-				.html('Unlocked Content')
 				.prependTo(solution_wrapper);
 			var btn_ex = $('<div>')
 				.addClass('btn_ex')
@@ -382,9 +385,12 @@ Interactive.prototype = {
 function Popup(parent){
 	var self = this;
 	this.par = parent;
+	var wrapper = $('<div>')
+		.addClass('int_popup_wrapper')
+		.appendTo(this.par.container);
 	this.container = $('<div>')
 		.addClass('int_popup')
-		.appendTo(this.par.container);
+		.appendTo(wrapper);
 	this.btn_ex = $('<div>')
 		.addClass('btn_ex')
 		.html('x')
@@ -412,7 +418,6 @@ Popup.prototype = {
 		self.container
 			.removeClass('red blue white black map img text text_img')
 			.addClass(type);
-		console.log(content);
 		if(content.img){
 			self.container.addClass('img');
 		}
@@ -447,34 +452,45 @@ Popup.prototype = {
 			var total_left = finger_left + fingers_wrapper_left;
 			var left = total_left - (self.container.width()/2);
 			if(type==='map'){
-				left = Math.max(total_left, left);
+				left = Math.min(600,Math.max(total_left, left));
 			}
 			self.container.css('left',left);
 		}());
 		(function orientTop(){
-			var finger_top = finger.position().top + fingers_wrapper.position().top;
-			var fingers_wrapper_top = fingers_wrapper.position().top;
-			var top = finger_top + fingers_wrapper_top;
+			// var finger_top = finger.position().top + fingers_wrapper.position().top;
+			// var fingers_wrapper_top = fingers_wrapper.position().top;
+			// var top = finger_top + fingers_wrapper_top;
+			var finger_bottom = self.par.container.height() - (finger.position().top + 300) - 20;
 			self.container
-				.css('top',top);
+				.css('bottom',finger_bottom);
 		}());
 	},
 	selectContent:function(type,callback){
 		var self = this;
 		var data = this.data[type];
 		if(!data.slides){
+			shuffle(data);
 			this.data[type] = {slides:data,index:0};
 			data = this.data[type];
 		}
 		else{
 			if(data.index === (data.slides.length-1)){
 				data.index = 0;
+				shuffle(data.slides);
 			}
 			else{
 				data.index++;
 			}
 		}
 		var selected_item = data.slides[data.index];
+		this.last_selected_item = selected_item;
+		function shuffle(array){
+			scrambleArray(array);
+			if(array[0] === self.last_selected_item){
+				array.splice(0,1);
+				array.push(self.last_selected_item);
+			}
+		}
 		if(callback){
 			callback(selected_item);
 		}
@@ -509,7 +525,7 @@ Popup.prototype = {
 		}
 		if(content.text){
 			$('<div>')
-				.addClass('slide_text')
+				.addClass('book_wrapper')
 				.html(content.text)
 				.appendTo(cell)
 				.fadeIn();
@@ -531,8 +547,20 @@ Popup.prototype = {
 		this.disabled = false;
 		return this;
 	}
-
 };
+
+function scrambleArray(myArray) {
+	var i = myArray.length,
+		j, tempi, tempj;
+	if (i===0) return false;
+	while (--i) {
+		j = Math.floor(Math.random() * (i + 1));
+		tempi = myArray[i];
+		tempj = myArray[j];
+		myArray[i] = tempj;
+		myArray[j] = tempi;
+	}
+}
 
 var my_interactive = new Interactive('int');
 
