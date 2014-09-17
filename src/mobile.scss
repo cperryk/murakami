@@ -4,31 +4,58 @@
 	-webkit-transform:rotate($angle);
 }
 
+
 #int{
 	width:100%;
 	.int_popup{
-		width:100% !important;
-		height:100% !important;
-		left:0px !important;
-		top:0px !important;
 		z-index:3;
-		padding:0;
+		left:0px !important;
 		&.img{
+			background:none !important;
 			&.black,&.red,&.map,&.blue,&.white{
 				@include rotate(0deg);
 			}
 		}
+		&.text{
+			border-left:none;
+			border-right:none;
+		}
+		.slide_img{
+			max-width:100%;
+			max-height:100%;
+			height:auto;
+		}
+		p{
+			font-size:0.8em;
+		}
 	}
 	.btn_ex{
-		font-size:2em;
+		font-size:0.85em;
 	}
 	.int_popup_wrapper{
 		width:100%;
 	}
 	.int_popup.text{
-		border:none;
+		//border:none;
 	}
 	.btn_mute{
 		display:none;
+	}
+	.fingers_wrapper{
+		width:100%;
+	}
+	.note{
+		width:25px;
+		height:25px;
+	}
+	.solution_wrapper{
+		width:auto;
+	}
+	.int_teaser{
+		position: static;
+		float:left;
+		border:1px solid #e3e3e3;
+		padding:1em;
+		margin:1em;
 	}
 }

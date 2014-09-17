@@ -30,7 +30,7 @@
 //-- Stop hiding script -->
 
     </script>
-    
+
 <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQ4OUFNbGwEGU1dUAwE="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e){function n(t,e,n){n||(n={});for(var r=o[t],a=r&&r.length||0,s=n[i]||(n[i]={}),u=0;a>u;u++)r[u].apply(s,e);return s}function r(t,e){var n=o[t]||(o[t]=[]);n.push(e)}var o={},i="nr@context";e.exports={on:r,emit:n}},{}],2:[function(t){function e(t,e,n,i,s){return u?u-=1:r("err",[s||new UncaughtException(t,e,n)]),"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t(5),a=window.onerror,s=!1,u=0;t("loader").features.push("err"),window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(d){"stack"in d&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(4),s=!0)}i.on("fn-start",function(){s&&(u+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&u>0&&(u-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:4,3:3,4:6,5:1,6:14,handle:"D5DuLP",loader:"G9z0Bl"}],3:[function(t){function e(t){r.inPlace(t,["addEventListener","removeEventListener"],"-",n)}function n(t){return t[1]}var r=t(1),o=(t(3),t(2));if(e(window),"getPrototypeOf"in Object){for(var i=document;i&&!i.hasOwnProperty("addEventListener");)i=Object.getPrototypeOf(i);i&&e(i);for(var a=XMLHttpRequest.prototype;a&&!a.hasOwnProperty("addEventListener");)a=Object.getPrototypeOf(a);a&&e(a)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&e(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=e["nr@wrapped"]?t[1]=e["nr@wrapped"]:e["nr@wrapped"]=t[1]=r(e,"fn-"):"function"==typeof e.handleEvent&&r.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:15,2:1,3:14}],4:[function(t){var e=(t(3),t(1)),n=t(2);e.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=e(t[0],"fn-")})},{1:15,2:1,3:14}],5:[function(t){function e(t){var e=t[0];"string"==typeof e&&(e=new Function(e)),t[0]=n(e,"fn-")}var n=(t(3),t(1)),r=t(2);n.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",e)},{1:15,2:1,3:14}],6:[function(t){function e(){o.inPlace(this,s,"fn-")}function n(t,e){o.inPlace(e,["onreadystatechange"],"fn-")}function r(t,e){return e}var o=t(1),i=t(2),a=window.XMLHttpRequest,s=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];window.XMLHttpRequest=function(t){var n=new a(t);try{i.emit("new-xhr",[],n),o.inPlace(n,["addEventListener","removeEventListener"],"-",function(t,e){return e}),n.addEventListener("readystatechange",e,!1)}catch(r){try{i.emit("internal-error",r)}catch(s){}}return n},window.XMLHttpRequest.prototype=a.prototype,o.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",r),i.on("send-xhr-start",n),i.on("open-xhr-start",n)},{1:15,2:1}],7:[function(t){function e(){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;u>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,d="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(d);if(f&&(r.rxSize=f),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}t("loader").features.push("xhr");var o=t("handle"),i=t(1),a=t(5),s=["load","error","abort","timeout"],u=s.length,d=t(2);t(3),t(4),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var d=e(o);d&&(r.txSize=d)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",e)}catch(r){}}};for(var f=0;u>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&e()},{1:8,2:11,3:3,4:6,5:1,handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e){var n=r[t];return n?n.apply(this,e):(o[t]||(o[t]=[]),void o[t].push(e))}var r={},o={};e.exports=n,n.queues=o,n.handlers=r},{}],11:[function(t,e){function n(t){if(!t||"object"!=typeof t&&"function"!=typeof t)return-1;if(t===window)return 0;if(o.call(t,"__nr"))return t.__nr;try{return Object.defineProperty(t,"__nr",{value:r,writable:!0,enumerable:!1}),r}catch(e){return t.__nr=r,r}finally{r+=1}}var r=1,o=Object.prototype.hasOwnProperty;e.exports=n},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&u&&u.body){p.proto="https"===c.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=p.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,u=s.document,d="addEventListener",f="attachEvent",c=(""+location).split("?")[0],p=e.exports={offset:i(),origin:c,features:[]};u[d]?(u[d]("DOMContentLoaded",o,!1),s[d]("load",n,!1)):(u[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],14:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],15:[function(t,e){function n(t,e,r,s){function nrWrapper(){try{var n,a=u(arguments),d=this,f=r&&r(a,d)||{}}catch(c){i([c,"",[a,d,s],f])}o(e+"start",[a,d,s],f);try{return n=t.apply(d,a)}catch(p){throw o(e+"err",[a,d,p],f),p}finally{o(e+"end",[a,d,n],f)}}return a(t)?t:(e||(e=""),nrWrapper[n.flag]=!0,nrWrapper)}function r(t,e,r,o){r||(r="");var i,s,u,d="-"===r.charAt(0);for(u=0;u<e.length;u++)s=e[u],i=t[s],a(i)||(t[s]=n(i,d?s+r:r,o,s,t))}function o(t,e,n){try{s.emit(t,e,n)}catch(r){i([r,t,e,n])}}function i(t){try{s.emit("internal-error",t)}catch(e){}}function a(t){return!(t&&"function"==typeof t&&t.apply&&!t[n.flag])}var s=t(1),u=t(2);e.exports=n,n.inPlace=r,n.flag="nr@wrapper"},{1:1,2:14}]},{},["G9z0Bl",2,7]);</script>
     <script type="text/javascript">
       var slate_public_url = "http://www.slate.com/";
@@ -43,27 +43,27 @@
     <meta name="keywords" content="Chart: Which countries are friends and which are enemies in the Middle East?" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    
-    
 
-    
-    
-    
+
+
+
+
+
     <script>
-      
+
       var commercialNode = 'blogs/the_world';
-      
+
       var selectedText = "";
     </script>
     <!-- Facebook OG -->
     <meta id="ogtitle" property="og:title" content="The Middle East Friendship Chart" />
-    
+
 
     <meta property="article:publisher" content="http://www.facebook.com/Slate" />
 
-    
+
     <meta property="article:author" content="https://www.facebook.com/cperryk" />
-    
+
 
     <meta property="og:type" content="article" />
     <meta id="ogurl" property="og:url" content="http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html" />
@@ -74,16 +74,16 @@
     <!-- Twitter -->
     <meta name="twitter:card" value="summary" />
     <meta name="twitter:site" value="@slate" />
-    
+
     <meta name="twitter:creator" value="@joshuakeating, @chrkirk" />
-    
+
     <meta name="twitter:url" value="http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html" />
     <meta name="twitter:title" value="The Middle East Friendship Chart" />
     <meta name="twitter:description" value="With overlapping civil wars in Syria and Iraq, a new flare-up of violence between Israel and the Palestinians, and tense nuclear talks with Iran, Middle Eastern politics are more volatile than ever and longtime alliances are shifting. Here's a guide to who's on whose side in the escalating chaos. Click..." />
     <meta name="twitter:image" value="http://www.slate.com/content/dam/slate/uploads/2014/7/17/graphical_version.png/_jcr_content/renditions/cq5dam.web.1280.1280.png" />
-    
+
     <link type="text/css" href="//slate-static-prod.s3.amazonaws.com/etc/designs/slate/css/story.09ff714d.css" rel="stylesheet" />
-    
+
     <script data-ad-site="slate" src="//slate-static-prod.s3.amazonaws.com/etc/designs/slate/js/libs/require.js"></script>
     <script>
     requirejs.config({
@@ -164,7 +164,7 @@
     });
 
 
-    
+
     define("config", {
       "env": {
         "edit": false
@@ -215,13 +215,13 @@
        }
     });
     </script>
-    
 
-    
+
+
     <script src="//slate-static-prod.s3.amazonaws.com/etc/designs/slate/js/main.min.7b41e71d.js"></script>
-    
 
-    
+
+
 
 
 <script type="text/javascript" language="javascript">
@@ -258,7 +258,7 @@ s.t();
 </script>
 
 
-    <script>               
+    <script>
       var _isNavMoving = false; // acts as a global (sorry) mutex for keeping track of when our nav panels are moving around. Allows us to prevent overlapping actions.
     </script>
 
@@ -279,14 +279,14 @@ s.t();
   "author": "Joshua Keating and Chris Kirk",
   "tags": []
 }'/>
-    
+
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="The World  (RSS 2.0)" href="http://www.slate.com/blogs/the_world_.fulltext.all.rss" />
 
-    
+
     <script>var wp_meta_data = {"authors":["Joshua Keating","Chris Kirk"],"contentType":"blog","page_id":"236140717002","keywords":"Chart: Which countries are friends and which are enemies in the Middle East?","section":"News and Politics","rubric":"Blog"};</script>
 
-    
+
     <![if gte IE 8]>
     <script type="text/javascript">
     requirejs(['pagenav', 'jquery'], function(pagenav, $) {
@@ -298,12 +298,12 @@ s.t();
         'url': 'http:\/\/www.slate.com\/blogs\/the_world_\/2014\/07\/17\/ceasefire_and_escalation_rumors_be_wary_of_stories_quoting_one_israeli_official.html',
         'article_id': '236140717001',
         'hasImage': true,
-        
+
         'image': '',
-        
-      
+
+
         'section': 'The World ',
-      
+
         'subscribe_type': 'rubric'
       };
       $.data(window, "SlateNextbox", SlateNextbox);
@@ -312,13 +312,13 @@ s.t();
 
     </script>
     <![endif]>
-    
+
 
     <meta name="apple-itunes-app" content="app-id=384914589, app-argument=http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html">
 
-    
 
-      
+
+
         <!-- sailthru meta -->
         <meta name="sailthru.tags" content="Chart: Which countries are friends and which are enemies in the Middle East?" />
         <meta name="sailthru.author" content="Joshua Keating, Chris Kirk" />
@@ -329,7 +329,7 @@ s.t();
         <meta name="sailthru.headline" content="The Middle East Friendship Chart" />
         <meta name="sailthru.subheadline" content="" />
         <meta name="sailthru.promoheadline" content="The Middle East Friendship Chart" />
-        
+
 
       <script>SG_Debug && SG_Debug.pagedebug && window.console && console.log && console.log('[' + (new Date()-SG_Debug.initialTime)/1000 + ']' + ' Bottom of head.jsp');</script>
   </head>
@@ -343,7 +343,7 @@ s.t();
     <header class="roll-up" id="tablet_header">
       <div class="container">
         <div class="main">
-    
+
         </div>
         <div class="sidebar">
           <section class="nav-panel">
@@ -363,41 +363,41 @@ s.t();
       </div><!-- /.container -->
     </header><!-- /.header.roll-up -->
     <!-- HCS END: shared/roll_ups/tablet -->
-    
+
     <div class="top">
-      
+
 <div id="slug_t" class="tAd ad " data-ad-type="t" data-ad-mode="mobile"></div>
 
-      
+
 <div id="slug_leaderboard" class="banner ad " data-ad-type="leaderboard" data-ad-mode="large"></div>
 
-      
+
 <div id="slug_pushdown" class="banner ad " data-ad-type="pushdown" data-ad-mode="large"></div>
 
     </div><!-- end #top -->
-    
+
     <!-- HCS END: layouts/shared/top -->
-    
-    
-    
+
+
+
 
 <!-- this is the rollup for basic article, no multipart fun -->
 <header class="roll-up with-dropdown" id="article_rollup">
   <div class="container">
-    
+
     <div class="main">
       <div class="titles centered-titles">
         <h1 class="primary centered-primary">Murakami</h1>
       </div>
-      
+
 
 
 <div class="social social-with-popup sharing-buttons">
     <a href="http://www.facebook.com/sharer.php?s=100&p[title]=The+Middle+East+Friendship+Chart&p[summary]=With+overlapping+civil+wars+in+Syria+and+Iraq,+a+new+flare-up+of+violence+between+Israel+and+the+Palestinians,+and+tense+nuclear+talks+with+Iran,+Middle+Eastern+politics+are+more+volatile+than+ever+and+longtime+alliances+are+shifting.+Here's+a+guide+to+who's+on+whose+side+in+the+escalating+chaos.+Click...&p[ref]=sl_live&p[images][0]=http://www.slate.com/content/dam/slate/uploads/2014/7/17/graphical_version.png/_jcr_content/renditions/cq5dam.web.1280.1280.png" class="facebook first">
       <span class="icon"></span>
       <span class="count"></span>
-    </a>    
-    
+    </a>
+
     <div class="twitter">
     <a href="http://twitter.com/share?text=The+Middle+East+Friendship+Chart&count=none&via=slate&url=http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html" class="twitter">
       <span class="icon"></span>
@@ -405,15 +405,15 @@ s.t();
     </a>
     </div>
 
-    
+
       <a href="#comments" class="comments">
-        <span class="icon"></span>           
-      </a>        
-    
+        <span class="icon"></span>
+      </a>
+
 
      <a href="mailto:?subject=Check%20out%20this%20piece%20on%20Slate&body=I%20thought%20you%20might%20like%20this%20article%20on%20Slate:%0AThe%20Middle%20East%20Friendship%20Chart%0Ahttp://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html" class="email">
-        <span class="icon"></span>         
-      </a>        
+        <span class="icon"></span>
+      </a>
 </div>
 
 
@@ -427,10 +427,10 @@ s.t();
           <a href="#" class="global-nav-handle"></a>
           <!-- HCS: shared/nav/buttons -->
           <div class="buttons">
-            
+
             <span class="link option"><a class="first nav-option sign-in-link" href="#" id="sign_in_link">Sign In</a></span>
             <span class="link option"><a href="#" class="nav-option sign-up-link" id="sign_up_link">Sign Up</a></span>
-            
+
           </div>
           <!-- HCS END: shared/nav/buttons -->
         </div>
@@ -443,23 +443,23 @@ s.t();
   <script>SG_Debug && SG_Debug.pagedebug && window.console && console.log && console.log('[' + (new Date()-SG_Debug.initialTime)/1000 + ']' + ' Bottom of header.jsp');</script>
 
     <div class="page">
-      
+
       <article class="main">
-        
+
         <div class="parsys contentWellTop iparsys"><div class="section"><div class="new"></div>
 </div><div class="iparys_inherited"><div class="parsys contentWellTop iparsys">
 </div>
 </div>
 </div>
 
-        
+
 
     <header class="article-header" id="article_header">
       <div class="meta">
         <div class="prop-name print-only"><a href="http://www.slate.com">Slate</a></div><div class="prop-name"><a href="http://www.slate.com/blogs/the_world_.html">The World </a></div><div class="prop-desc">How It Works</div><div class="pub-date">July 17 2014 12:07 PM</div>
       </div>
       <h1 class="hed"><div class="fullwidth-page">Murakami</div></h1>
-      
+
 
 
  <div class="social social-with-popup sharing-buttons" id="header_social">
@@ -473,37 +473,37 @@ s.t();
     </a>
     <a class="tw-count" href="http://twitter.com/search?q=http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html"><span class="count"></span></a>
     </div>
-    
+
       <a href="#comments" class="comments">
         <span class="icon"></span>
         <span class="count"></span>
       </a>
-    
+
  </div>
 
 
       <h2 class="dek"></h2>
 
-      
+
       <div class="byline" id="main_byline">
       <div class="fullwidth-page">
         By <a href="http://www.slate.com/authors.joshua_keating.html">Joshua Keating</a> and <a href="http://www.slate.com/authors.chris_kirk.html">Chris Kirk</a>
       </div>
       </div>
-      
-      
-      
+
+
+
 
 
   <div class="social horiz-counts-mobile centered sharing-buttons">
-    
+
       <div class="comments">
         <a class="mobile-comments" href="#comments">
           <span class="icon"></span>
           <span class="count"></span>
         </a>
       </div>
-    
+
     <div class="facebook">
       <a href="http://www.facebook.com/sharer.php?m2w&s=100&p[title]=The+Middle+East+Friendship+Chart&p[summary]=With+overlapping+civil+wars+in+Syria+and+Iraq,+a+new+flare-up+of+violence+between+Israel+and+the+Palestinians,+and+tense+nuclear+talks+with+Iran,+Middle+Eastern+politics+are+more+volatile+than+ever+and+longtime+alliances+are+shifting.+Here's+a+guide+to+who's+on+whose+side+in+the+escalating+chaos.+Click...&p[ref]=sl_live&p[images][0]=http://www.slate.com/content/dam/slate/uploads/2014/7/17/graphical_version.png/_jcr_content/renditions/cq5dam.web.1280.1280.png" class="share facebook" target="_blank">
         <span class="icon"></span>
@@ -525,7 +525,7 @@ s.t();
   </div>
 
 
-      
+
     </header><!-- /header -->
 
     <section class="content content-full-width">
@@ -535,7 +535,7 @@ s.t();
         <div class="body parsys">
 
 
-                    
+
                     <div class="parbase image slate_image section">
 
 
@@ -563,7 +563,7 @@ requirejs(["jquery"], function($) {
 </div>
 
 
-                    
+
                     <div class="text text-1 parbase section">
 
 <p>With overlapping civil wars in Syria and Iraq, a new flare-up of violence between Israel and the Palestinians, and tense nuclear talks with Iran, Middle Eastern politics are more volatile than ever and longtime alliances are shifting. Here's a guide to who's on whose side in the escalating chaos.<strong> Click a cell to learn more information.</strong></p>
@@ -572,17 +572,17 @@ requirejs(["jquery"], function($) {
 </div>
 
 
-                    
-                    
 
-                    
+
+
+
 <!-- RenderHTML --><link rel="stylesheet" href="http://www.slate.com/features/2014/06/murakami/styles.css"/><link rel="stylesheet" media="(max-width:570px)" href="http://www.slate.com/features/2014/06/murakami/mobile.css"/><script type="text/javascript" src="http://www.slate.com/features/2014/06/murakami/script.js"></script><div id="int"></div><!-- end RenderHTML -->
 
 
 </div>
 
 
-                    
+
                     <div class="text-2 text parbase section">
 
 <p><em><strong>*Correction, July 17, 2014</strong>: Due to a production error, this chart originally misstated that Saudi Arabia and Syria are friends. They are enemies. Also, the chart misstated the relationship between Egypt and Syria as the relationship between Egypt and Saudi Arabia.</em></p>
@@ -595,43 +595,43 @@ requirejs(["jquery"], function($) {
 
 </div>
 
-        
-        
+
+
     </section>
 
 <footer>
-      
-		
 
 
-  
+
+
+
   <section class="about-the-author multi">
-    
+
     <div class="author-bio">
       <p>
         <p>Joshua Keating is a staff writer at <b><i>Slate </i></b>focusing on international affairs and writes the World blog.&nbsp;</p>
 
 	  </p>
 	</div>
-	
+
     <div class="author-bio">
       <p>
         <p>Chris Kirk is <b><i>Slate</i></b>'s interactives editor. <a target="_blank" href="https://twitter.com/chrkirk">Follow him on Twitter</a>.</p>
 
 	  </p>
 	</div>
-	
+
   </section>
-  
 
-      
 
-  
-  
+
+
+
+
   <div class="fullwidth-wrapper">
-  
-    <div class="pagination">  
-      
+
+    <div class="pagination">
+
 
 
     <div class="social social-with-popup sharing-buttons">
@@ -640,7 +640,7 @@ requirejs(["jquery"], function($) {
         <a href="http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.single.html?print" target="_blank" class="print">PRINT</a>
         <a href="mailto:?subject=Check%20out%20this%20piece%20on%20Slate&body=I%20thought%20you%20might%20like%20this%20article%20on%20Slate:%0AThe%20Middle%20East%20Friendship%20Chart%0Ahttp://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html" class="email">EMAIL</a>
         <div class="arrow-border"></div>
-        <div class="arrow"></div>        
+        <div class="arrow"></div>
       </div>
       <a href="#" class="plus">
         <span class="icon"></span>
@@ -655,28 +655,28 @@ requirejs(["jquery"], function($) {
     </a>
     <a class="tw-count" href="http://twitter.com/search?q=http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html"><span class="count"></span></a>
     </div>
-      
+
         <a href="#comments" class="comments">
-          <span class="icon"></span>         
-          <span class="count"></span>                
-        </a>              
-      
+          <span class="icon"></span>
+          <span class="count"></span>
+        </a>
+
     </div>
-    
+
 
     </div><!-- /.pagination -->
-    
+
 
 
   <div class="social horiz-counts-mobile centered sharing-buttons">
-    
+
       <div class="comments">
         <a class="mobile-comments" href="#comments">
           <span class="icon"></span>
           <span class="count"></span>
         </a>
       </div>
-    
+
     <div class="facebook">
       <a href="http://www.facebook.com/sharer.php?m2w&s=100&p[title]=The+Middle+East+Friendship+Chart&p[summary]=With+overlapping+civil+wars+in+Syria+and+Iraq,+a+new+flare-up+of+violence+between+Israel+and+the+Palestinians,+and+tense+nuclear+talks+with+Iran,+Middle+Eastern+politics+are+more+volatile+than+ever+and+longtime+alliances+are+shifting.+Here's+a+guide+to+who's+on+whose+side+in+the+escalating+chaos.+Click...&p[ref]=sl_live&p[images][0]=http://www.slate.com/content/dam/slate/uploads/2014/7/17/graphical_version.png/_jcr_content/renditions/cq5dam.web.1280.1280.png" class="share facebook" target="_blank">
         <span class="icon"></span>
@@ -729,7 +729,7 @@ requirejs(["jquery"], function($) {
 
       </div>
     </div> <!-- /.footer-tiles -->
-  
+
   </div> <!-- #fullwidth-wrapper -->
   <div class="sidebar">
     <div class="parsys iparsys contentSidebar"><div class="section"><div class="new"></div>
@@ -755,7 +755,7 @@ if (!mobileMode()) {
    campaigns.set({
      id: "sp_25x_interstitial_softlaunch",
      template_id: "slateplus",
-     data: { 
+     data: {
        "img": { "src": "slateplus-logo.png" },
        "title": "You like Slate. And we like you. This is Slate Plus.",
        "body": "<div style='font-size: 1em; line-height: 1.1;'><strong><em>Slate Plus</em></strong>, our new membership program, offers our loyal readers great perks, including special access to your favorite Slate writers and editors, ad free podcasts with bonus audio segments, early access to some of our very best content, exclusive behind-the-scenes features, 30 percent off live events and 20 percent off Slate merchandise, and more.<br/><br/>Become a founding annual member today and you’ll receive a Slate mug exclusively designed by Jonathan Adler!</div>",
@@ -783,7 +783,7 @@ if (!mobileMode()) {
 
  });
 
-</script> 
+</script>
 </div>
 <div class="mostpopular section">
 
@@ -791,55 +791,55 @@ if (!mobileMode()) {
 <section class="items">
   <a class="header" href="#">Most Read</a>
   <ul class="numbered-list">
-  
-    
-      
+
+
+
       <li><a href="http://www.slate.com/articles/life/education/2014/07/william_deresiewicz_ivy_league_the_persistent_misguided_belief_that_universities.html"><small>1.</small> <span>Elite Universities Can’t Transform Spoiled Brats Into Better, Less-Entitled People</span></a></li>
-      
-    
-  
-    
-      
+
+
+
+
+
       <li><a href="http://www.slate.com/blogs/weigel/2014/07/23/when_you_ve_lost_jon_stewart_you_ve_lost_middle_america.html"><small>2.</small> <span>When You’ve Lost Jon Stewart, You’ve Lost Middle America</span></a></li>
-      
-    
-  
-    
-      
+
+
+
+
+
       <li><a href="http://www.slate.com/blogs/browbeat/2014/07/22/new_yorker_online_free_for_three_months_what_should_you_read.html"><small>3.</small> <span>The&nbsp;<em>New Yorker</em>&nbsp;Stories You Should Read Before the Paywall Goes Up</span></a></li>
-      
-    
-  
-    
-      
+
+
+
+
+
       <li><a href="http://www.slate.com/articles/news_and_politics/politics/2014/07/max_steinberg_death_how_birthright_convinces_american_jews_to_embrace_israel.html"><small>4.</small> <span>What Makes an American Kid With Shaky Hebrew Decide He Is Ready to Die for Israel?</span></a></li>
-      
-    
-  
-    
-      
+
+
+
+
+
       <li><a href="http://www.slate.com/articles/news_and_politics/politics/2014/07/the_halbig_decision_is_dangerous_for_republicans_obamacare_is_more_popular.html"><small>5.</small> <span>Why the <em>Halbig</em> Decision Is Nothing for Republicans to Celebrate</span></a></li>
-      
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </ul>
 </section>
 
@@ -850,85 +850,85 @@ if (!mobileMode()) {
 <section data-vr-zone="Most Shared">
     <header class="black-header">Most Shared</header>
     <ul class="numbered-list">
-        
-            
-                
+
+
+
                 <li data-vr-contentbox="">
                   <a href="http://www.slate.com/blogs/xx_factor/2014/07/21/sara_hellwege_sues_tampa_family_health_centers_pro_life_nurse_says_her_religious.html">
                     <small>1.</small> <span>Pro-Life Nurse-Midwife Who Won’t Prescribe the Pill Sues Family Planning Center for Not Hiring Her</span>
                   </a>
                 </li>
-                
-            
-        
-            
-                
+
+
+
+
+
                 <li data-vr-contentbox="">
                   <a href="http://www.slate.com/blogs/browbeat/2014/07/21/john_oliver_prison_segment_on_last_week_tonight_is_one_you_should_watch.html">
                     <small>2.</small> <span>Watch John Oliver Explain Just How Broken America’s Prison System Is</span>
                   </a>
                 </li>
-                
-            
-        
-            
-                
+
+
+
+
+
                 <li data-vr-contentbox="">
                   <a href="http://www.slate.com/blogs/outward/2014/07/21/obama_signs_history_executive_enda_forbidding_lgbt_discrimination.html">
                     <small>3.</small> <span>Obama Signs Historic LGBT Non-Discrimination Order</span>
                   </a>
                 </li>
-                
-            
-        
-            
-                
+
+
+
+
+
                 <li data-vr-contentbox="">
                   <a href="http://www.slate.com/blogs/browbeat/2014/07/22/new_yorker_online_free_for_three_months_what_should_you_read.html">
                     <small>4.</small> <span>The&nbsp;<em>New Yorker</em>&nbsp;Stories You Should Read Before the Paywall Goes Up</span>
                   </a>
                 </li>
-                
-            
-        
-            
-                
+
+
+
+
+
                 <li data-vr-contentbox="">
                   <a href="http://www.slate.com/articles/news_and_politics/politics/2014/07/max_steinberg_death_how_birthright_convinces_american_jews_to_embrace_israel.html">
                     <small>5.</small> <span>What Makes an American Kid With Shaky Hebrew Decide He Is Ready to Die for Israel?</span>
                   </a>
                 </li>
-                
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
     </ul>
 </section>
 </div>
 <div class="rightrailstories section">
 
 <section class="items">
-  
-  <a class="header" href="#">RECOMMENDED</a>
-  
 
-  
+  <a class="header" href="#">RECOMMENDED</a>
+
+
+
     <div id="rr-results" data-track-module="smart-rr" data-omit-views="true">
     <div class="smallvideos">
 
 <div class="row">
 <section class="video-gallery" id="small_videos" style="display: none;">
     <div id='small_video_gallery_mobile_wrap'>
-        
+
         <div class="current-video">
             <img src="http://www.slate.com/content/dam/slate/articles/life/dear_prudence/PRUDIE_ANIMATED_PROMO.jpg.CROP.hd-large.jpg" />
             <a href="http://www.slate.com/articles/video/dear_prudence/2014/07/dear_prudence_video_worry_over_baby_s_body_image.html?wpisrc=seg_video" class="primary">
@@ -936,7 +936,7 @@ if (!mobileMode()) {
                 <span class="main-title">Baby’s Body Image</span>
             </a>
         </div>
-        
+
     </div>
 </section>
 </div>
@@ -960,28 +960,28 @@ requirejs(["jquery"], function($) {
 </script></div>
 
       <div class="rr-block" data-count="3"></div>
-     
+
       <div class="item ad-container">
-        
+
 <div id="slug_rightflex" class="ad " data-ad-type="rightflex" data-ad-mode="desktop"></div>
 
-        
-        
+
+
 <div id="slug_rightflex" class="ad " data-ad-type="rightflex" data-ad-mode="tabletLandscape"></div>
 
-        
+
       </div>
-      
+
       <div class="rr-block" data-count="9"></div>
-     
+
       <div class="rr-block"></div>
     </div>
 
-  
+
  </section>
 
 
- 
+
 <script type="text/javascript">
 requirejs(["rrstories"], function(rrs) {
     rrs.init(12,28,"trending");
@@ -997,7 +997,7 @@ requirejs(["rrstories"], function(rrs) {
 </div>
 
   </div>
-  
+
 </footer>
 
 
@@ -1018,7 +1018,7 @@ requirejs(["rrstories"], function(rrs) {
 var loadLivefyre = function () {
    var articleId = "236140717002";
    if (articleId.length == 0) {
-     
+
      return;
    }
    if (typeof($) != "undefined") {
@@ -1293,8 +1293,8 @@ requirejs(["myslate", "jquery", "libs/jquery-plugins/jquery.cookie"], function(m
     $("#comments").addClass("inline");
     loadLivefyre();
     $('.top-comment-link a.primary').bind('click', function(e){
-      if(mobileMode()){return;} 
-      e.stopImmediatePropagation(); 
+      if(mobileMode()){return;}
+      e.stopImmediatePropagation();
       loadLivefyre();
     });
   } else {
@@ -1311,61 +1311,61 @@ requirejs(["myslate", "jquery", "libs/jquery-plugins/jquery.cookie"], function(m
 </div>
 </div>
 
-        
-        
+
+
       </article><!-- /.main -->
-      
+
 
       <aside class="sidebar" id="main_sidebar">
         <div class="sidebar-wrapper">
-          
+
           <section class="nav-panel " id="slate_logo">
             <div class="nav-header">
               <a class="slate-logo" href="/"><span class="logo">Slate</span></a>
               <a href="#" class="search-link sidebar-handle"></a>
               <a href="#" class="global-nav-handle sidebar-handle"></a>
               <div class="buttons">
-                
+
                 <span class="link option ">
                   <a class="first nav-option sign-in-link" href="#" id="sign_in_link">
                     Sign In
                   </a>
                 </span>
                 <span class="link option "><a href="#" class="nav-option sign-up-link" id="sign_up_link">Sign Up</a></span>
-                
+
               </div>
             </div>
           </section>
-          
 
-          
+
+
         </div><!-- /.sidebar-wrapper -->
       </aside><!-- /.sidebar -->
-      
-      
-      
-      	
+
+
+
+
 
   <footer id="article_footer_tiles">
     <section class="large-tiles tiles">
-      
-      
+
+
 
 
       <div data-style="stacked" class="tile long-hed stacked" style="background-image: url('http://www.slate.com/content/dam/slate/articles/news_and_politics/foreigners/2014/07/140723_FOR_GazaDeath.jpg.CROP.promo-medium2.jpg');"><a href="http://www.slate.com/articles/news_and_politics/foreigners/2014/07/atef_abu_saif_on_life_amid_the_bombing_of_gaza_israel_s_missiles_are_erasing.html" class="primary"></a><span class="rubrik">Foreigners</span><div class="full-tile"><span class="timestamp">July 23 2014 12:36 PM</span><span class="hed">I Do Not Want to Be a Number</span><span class="dek">The missiles raining on Gaza are reducing once beautiful lives to no more than digits. It happens in an instant, and the thought drives you mad.</span><span class="byline"><a href="http://www.slate.com/authors.atef_abu_saif.html">Atef Abu Saif</a></span></div></div>
-      
-      
+
+
 
 
       <div data-style="stacked" class="tile long-hed stacked" style="background-image: url('http://www.slate.com/content/dam/slate/articles/news_and_politics/foreigners/2014/07/140722_FOR_AbbasSolution.jpg.CROP.promo-medium2.jpg');"><a href="http://www.slate.com/articles/news_and_politics/politics/2014/07/how_to_save_gaza_demilitarization_and_abbas.html" class="primary"></a><span class="rubrik">Politics</span><div class="full-tile"><span class="timestamp">July 22 2014 11:05 PM</span><span class="hed">How to Save Gaza</span><span class="dek">And keep Israel and Hamas from fighting the next war.</span><span class="byline"><a href="http://www.slate.com/authors.william_saletan.html">William Saletan</a></span></div></div>
-      
-      
+
+
 
 
       <div data-style="notchD" class="tile long-hed full-image notched-screen" style="background-image: url('http://www.slate.com/content/dam/slate/uploads/2014/07/23/488490699-comedian-and-host-jon-stewart-speaks-onstage-at-spike.jpg.CROP.promo-medium2.jpg');"><a href="http://www.slate.com/blogs/weigel/2014/07/23/when_you_ve_lost_jon_stewart_you_ve_lost_middle_america.html" class="primary"></a><span class="rubrik">Weigel</span><div class="full-tile"><span class="timestamp">July 23 2014 10:07 AM</span><span class="hed">When You’ve Lost Jon Stewart, You’ve Lost Middle America</span><span class="byline"><a href="http://www.slate.com/authors.david_weigel.html">David Weigel</a></span></div></div>
-      
+
     </section>
-     
+
   </footer>
 <!--YieldMoTag-->
     <div data-lazy-widget>
@@ -1378,14 +1378,14 @@ requirejs(["myslate", "jquery", "libs/jquery-plugins/jquery.cookie"], function(m
     </script> -->
     </div>
     <!-- end yieldmo -->
-      
+
     </div><!-- /.page -->
 
 
   <script>SG_Debug && SG_Debug.pagedebug && window.console && console.log && console.log('[' + (new Date()-SG_Debug.initialTime)/1000 + ']' + ' Bottom of body.jsp');</script>
 
 <!-- HCS: layout -->
-  
+
     <footer class="footer-base">
       <div class="container">
 
@@ -1415,7 +1415,7 @@ requirejs(["myslate", "jquery", "libs/jquery-plugins/jquery.cookie"], function(m
 
 
     </footer>
-  
+
     <footer class="footer-base-toc">
       <div class="container">
         <div class="footer-link-cols">
@@ -1453,7 +1453,7 @@ requirejs(["myslate", "jquery", "libs/jquery-plugins/jquery.cookie"], function(m
 requirejs(["jquery", "hcs/libs/iscroll-lite", "modernizr", "hcs/script", "hcs/plugins/SGGlobalNav.jquery", "hcs/plugins/jQuery.highlighter","hcs/plugins/SGGlobalNav.jquery","libs/jquery-plugins/jquery.timeago","announcements","myslate"], function($, iScroll, unused0, unused1, unused2, unused3, unused4, unused5, announcements, myslate) {
   $(document).ready(function() {
     announcements.deleteOldCookies();
-    
+
     $("span.timeago").timeago();
   });
   function pageLoadedForScrolling(){
@@ -1560,49 +1560,49 @@ requirejs(["jquery", "hcs/libs/iscroll-lite", "modernizr", "hcs/script", "hcs/pl
 });
     </script>
 
-    
-    
+
+
 
     <script>
-requirejs(["jquery", "myslate", "hcs/script", "hcs/plugins/SGNavDropdown.jquery", 
+requirejs(["jquery", "myslate", "hcs/script", "hcs/plugins/SGNavDropdown.jquery",
 		"hcs/plugins/SGBigSlider.jquery","hcs/plugins/SGFootnote.jquery","hcs/plugins/SGRollup.jquery",
 		"hcs/plugins/SGNavDropdown.jquery","hcs/plugins/SGComments.jquery","hcs/plugins/SGLightbox.jquery",
-		"hcs/plugins/SGSocialIcons.jquery"], 
+		"hcs/plugins/SGSocialIcons.jquery"],
 		function($, myslate, unused0, unused1, unused2, unused3, unused4, unused5, unused6, unused7, unused8) {
 
     $(function(){
-        
+
       $('#big_slider').SGBigSlider({
         type: 'article'
       });
-      
-      $('.footnote').SGFootnote();      
+
+      $('.footnote').SGFootnote();
       var multipartArticleRollup = $('#article_rollup');
-    
+
       var subHed = $('#sub_hed');
-      if(subHed.length > 0){     
+      if(subHed.length > 0){
         subHed.SGNavDropdown({ // Multipart rollup triggered by tapping the subhed.
           extraId: 'subhed', // Used to name events inside the plugin, so we can be sure to bind/unbind the correct stuff.
           targetId: '#multipart_nav', // The thing to show.
           leftOffset: function(){ return $('#sub_hed').position().left; },
           topOffset: function(){ return $('#sub_hed').position().top + $('#sub_hed').outerHeight(true); },
           onShow: function(){
-            $('#multipart_nav').css('position', 'absolute');  
+            $('#multipart_nav').css('position', 'absolute');
             $('#multipart_nav').css('height', 'auto');
             $('#multipart_nav').css('overflow', 'auto');
             // subHed.find('.toggle').addClass('open-toggle');
           },
           onHide: function(){
             // subHed.find('.toggle').removeClass('open-toggle');
-          }        
-        });        
+          }
+        });
       }
-    
+
       if($('#article_header').length > 0){
         // The roll up.
         $('#main_sidebar').SGRollup({ // The main element assigned to this plugin is used to trigger the drop of the rollup on desktop mode.
           rollupEl: multipartArticleRollup,
-          topOffset: $('#slate_logo').height(), 
+          topOffset: $('#slate_logo').height(),
           leftOffset: $('#article_header').offset().left,
           tablet: {el: $('#article_header'), topOffset: $('#article_header').height()}, // Indicate the visibility triggers for tablet mode.
           mobile: {el: $('#tablet_header'), topOffset: $('#tablet_header').height()},// Indicate the visibility triggers for mobile mode.
@@ -1613,13 +1613,13 @@ requirejs(["jquery", "myslate", "hcs/script", "hcs/plugins/SGNavDropdown.jquery"
             }
             if (!myslate.isSlatePlusUser) {
               if ($('#comments').length > 0) {
-                $('#comments').data('plugin_SGComments').close();                      
+                $('#comments').data('plugin_SGComments').close();
               }
             }
-          }          
+          }
         });
-      }      
-    
+      }
+
     // Multipart dropdown triggered by the rollup in the multipart nav.
       multipartArticleRollup.SGNavDropdown({
         targetId: '#multipart_nav', // The thing to show.
@@ -1640,10 +1640,10 @@ requirejs(["jquery", "myslate", "hcs/script", "hcs/plugins/SGNavDropdown.jquery"
         },
         onHide: function(){
           $('#multipart_nav').data('openedByRollup', false);
-        }        
+        }
       });
-    
-    
+
+
       if (!myslate.isSlatePlusUser) {
         $('#comments').SGComments({
           handles: $('.social .comments, .comment-options a'),
@@ -1659,7 +1659,7 @@ requirejs(["jquery", "myslate", "hcs/script", "hcs/plugins/SGNavDropdown.jquery"
           topOffset: function(){ return $('#article_rollup').height(); },
           onShow: function(){
             if(multipartArticleRollup.data('plugin_SGNavDropdown').isTargetVisible()){
-              multipartArticleRollup.data('plugin_SGNavDropdown').close();  
+              multipartArticleRollup.data('plugin_SGNavDropdown').close();
             }
             if ($("#livefyre .fyre").size() == 0) {
               loadLivefyre();
@@ -1668,30 +1668,30 @@ requirejs(["jquery", "myslate", "hcs/script", "hcs/plugins/SGNavDropdown.jquery"
           mobile: {
             handle: $('#see_more_comments') // This both triggers the mobile comments and indicates where to drop the content in the DOM.
           }
-          
+
         });
       }
-    
-    
+
+
       // Trigger the slideshow lightbox for from the .slideshow-preview example.
         $('#slideshow_preview_link').SGLightbox({
           type: 'slideshow',
           slideshowElement: $('#the_slideshow')
-        });  
-    
-    
+        });
+
+
       $('.social-with-popup').SGSocialIcons({});
-      
-      watchMobileRollupSocialToggle();    
-    
+
+      watchMobileRollupSocialToggle();
+
       $('.expandable').find('.toggle').click(function(e){
         $(this).closest('.social').toggleClass('visible');
         $('#main_byline').toggle();
         e.preventDefault();
       });
-    
+
       $('.full-width').setFullWidth();
-    
+
       myslate.benefits();
 
     });
@@ -1699,7 +1699,7 @@ requirejs(["jquery", "myslate", "hcs/script", "hcs/plugins/SGNavDropdown.jquery"
     </script>
 
 
-    
+
     <script>
     requirejs(["facebook"], function(unused0) {
       $(function(){
@@ -1709,7 +1709,7 @@ requirejs(["jquery", "myslate", "hcs/script", "hcs/plugins/SGNavDropdown.jquery"
     </script>
     <!-- Buzzfeed -->
     <!-- Chartbeat -->
-    
+
 <script type="text/javascript">
 
 var _sf_async_config={uid:9250,domain:"slate.com"};
@@ -1750,7 +1750,7 @@ _sf_async_config.sections = _sf_async_config.sections + ",Blogs";
 })();
 </script>
     <!-- Parsely -->
-    
+
 
 <div id="parsely-root" style="display: none">
   <div id="parsely-cfg" data-parsely-site="slate.com"></div>
@@ -1767,21 +1767,21 @@ _sf_async_config.sections = _sf_async_config.sections + ",Blogs";
 })("script", "parsely", document);
 </script>
 <!-- END Parse.ly Include -->
-    
 
 
 
-    
-    
+
+
+
         <script>
             requirejs(["shared/sgads"], function(slateads) {
                 slateads.wire("http://js.slate.com/wp-srv/ad/loaders/latest/js/min/loader.min.js");
             });
         </script>
 
-    
 
-    
+
+
 
 
 
@@ -1789,12 +1789,12 @@ _sf_async_config.sections = _sf_async_config.sections + ",Blogs";
 <div class="nav-header" id="magic_nav_header">
   <a class="slate-logo" href="/"><span class="logo">Slate</span></a>
   <div class="buttons">
-  	
+
     <span class="link option"><a class="first nav-option sign-in-link" href="#" id="sign_in_link">
       Sign In
     </a></span>
     <span class="link option"><a href="#" class="nav-option sign-up-link" id="sign_up_link">Sign Up</a></span>
-    
+
   </div>
 </div><!-- /.nav-header -->
 <div id="nav_sections">
@@ -1818,12 +1818,12 @@ requirejs(["jquery","search"], function($,search) {
 });
 </script>
         <!-- mobile identity-->
-        
+
         <header id="mobile_identity">
             <a href="#"><button class="push-button" id="mobile_sign_in">SIGN IN</button></a>
             <a href="#"><button class="push-button" id="mobile_sign_up">SIGN UP</button></a>
         </header>
-        
+
         <!-- end mobile identity-->
 
       <section id="nav_sign_up_content" class="nav-content"></section>
@@ -1848,947 +1848,947 @@ requirejs(["jquery","search"], function($,search) {
 
         <div class="cols">
           <div class="col stories">
-            
+
             <!-- the default, notice the active one has .active-stories-for-nav -->
             <section class="stories-for-nav active-stories-for-nav" id="popular_stories_for_nav" data-vr-zone="Nav-Popular">
-              
-                
-                
+
+
+
                 <div class="photo-story story" data-vr-content-box="">
                   <a href="http://www.slate.com/articles/life/education/2014/07/william_deresiewicz_ivy_league_the_persistent_misguided_belief_that_universities.html?wpisrc=burger_bar" class="primary"></a>
-                  
+
                   <div class="photo">
                     <span class="rubrik">Education</span>
-                      
-                      
+
+
                       <img src="http://www.slate.com/content/dam/slate/articles/life/education/2014/07/140723_EDU_Harvard.jpg.CROP.promo-mediumsmall.jpg" />
                   </div>
-                  
+
                   <span class="title">Elite Universities Can’t Transform Spoiled Brats Into Better, Less-Entitled People</span>
                 </div>
-                
-                
-                
-              
-                
-                
-                
+
+
+
+
+
+
+
                 <div class="story" data-vr-content-box="">
                   <a href="http://www.slate.com/blogs/weigel/2014/07/23/when_you_ve_lost_jon_stewart_you_ve_lost_middle_america.html?wpisrc=burger_bar" class="primary">
                     <span class="title">When You’ve Lost Jon Stewart, You’ve Lost Middle America</span>
                   </a>
-                </div>      
-                
-                
-              
-                
-                
-                
+                </div>
+
+
+
+
+
+
                 <div class="story" data-vr-content-box="">
                   <a href="http://www.slate.com/blogs/browbeat/2014/07/22/new_yorker_online_free_for_three_months_what_should_you_read.html?wpisrc=burger_bar" class="primary">
                     <span class="title">The&nbsp;<em>New Yorker</em>&nbsp;Stories You Should Read Before the Paywall Goes Up</span>
                   </a>
-                </div>      
-                
-                
-              
-                
-                
-                
+                </div>
+
+
+
+
+
+
                 <div class="story" data-vr-content-box="">
                   <a href="http://www.slate.com/articles/news_and_politics/politics/2014/07/max_steinberg_death_how_birthright_convinces_american_jews_to_embrace_israel.html?wpisrc=burger_bar" class="primary">
                     <span class="title">What Makes an American Kid With Shaky Hebrew Decide He Is Ready to Die for Israel?</span>
                   </a>
-                </div>      
-                
-                
-              
-                
-                
-                
+                </div>
+
+
+
+
+
+
                 <div class="story" data-vr-content-box="">
                   <a href="http://www.slate.com/articles/news_and_politics/politics/2014/07/the_halbig_decision_is_dangerous_for_republicans_obamacare_is_more_popular.html?wpisrc=burger_bar" class="primary">
                     <span class="title">Why the <em>Halbig</em> Decision Is Nothing for Republicans to Celebrate</span>
                   </a>
-                </div>      
-                
-                
-              
-                
-                
-              
-                
-                
-              
-                
-                
-              
-                
-                
-              
-                
-                
-              
-                
-                
-              
-                
-                
-              
-                
-                
-              
-                
-                
-              
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </section><!-- /#popular_stories_for_nav-->
             <section class="stories-for-nav" id="recent_stories_for_nav"  data-vr-zone="Nav-Recent">
-                
-                    
+
+
                         <div class="photo-story story" data-vr-content-box="">
                             <a href="http://www.slate.com/blogs/future_tense/2014/07/23/two_weird_holes_in_siberia_are_they_related_to_climate_change_video.html?wpisrc=burger_bar" class="primary"></a>
-                            
+
                             <div class="photo">
                                 <span class="rubrik">Future Tense</span>
-                                
-                                
+
+
                                 <img src="http://www.slate.com/content/dam/slate/blogs/future_tense/2014/07/23/FT-140723-siberian%20hole.jpg.CROP.promo-mediumsmall.jpg" />
                             </div>
-                            
+
                             <span class="title">Now There Are Two Weird Holes in Siberia</span>
                         </div>
-                    
-                    
-                
-                    
-                    
+
+
+
+
+
                         <div class="story" data-vr-content-box=""  >
                             <a href="http://www.slate.com/blogs/weigel/2014/07/23/plagiarism_probably_just_ended_a_senate_race_in_montana.html?wpisrc=burger_bar" class="primary">
                                 <span class="title">Plagiarism Probably Just Ended a Senate Race in Montana</span>
                             </a>
                         </div>
-                    
-                
-                    
-                    
+
+
+
+
                         <div class="story" data-vr-content-box=""  >
                             <a href="http://www.slate.com/articles/sports/sports/2014/07/neil_harman_plagiarism_the_all_england_club_discovered_journalistic_malfeasance.html?wpisrc=burger_bar" class="primary">
                                 <span class="title">Wimbledon Discovered Its Annual Yearbook Was Full of Plagiarism, Kept Selling It Anyway</span>
                             </a>
                         </div>
-                    
-                
-                    
-                    
+
+
+
+
                         <div class="story" data-vr-content-box=""  >
                             <a href="http://www.slate.com/blogs/the_world_/2014/07/23/gaza_and_ukraine_are_tragedies_but_iraq_and_syria_are_much_bigger_problems.html?wpisrc=burger_bar" class="primary">
                                 <span class="title">While the World Was Watching Gaza and Ukraine, Things Have Only Gotten Worse in Iraq and Syria</span>
                             </a>
                         </div>
-                    
-                
-                    
-                    
+
+
+
+
                         <div class="story" data-vr-content-box=""  >
                             <a href="http://www.slate.com/blogs/browbeat/2014/07/23/songs_that_time_forgot_the_most_and_least_obscure_hits_in_two_charts.html?wpisrc=burger_bar" class="primary">
                                 <span class="title">The Hit Songs That Have Been Completely Forgotten, in One Chart</span>
                             </a>
                         </div>
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <div class="load-more-button">
                     <a href="/full_slate.html?wpisrc=burger_bar">VIEW ALL</a>
                 </div>
             </section><!-- /#recent_stories_for_nav-->
 
-            
+
 
 <section class="stories-for-nav" id="news_and_politics_stories_for_nav" data-vr-zone="Nav-news_and_politics">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/weigel/2014/07/23/plagiarism_probably_just_ended_a_senate_race_in_montana.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <span class="title">Plagiarism Probably Just Ended a Senate Race in Montana</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/the_world_/2014/07/23/gaza_and_ukraine_are_tragedies_but_iraq_and_syria_are_much_bigger_problems.html?wpisrc=burger_bar" class="primary">
             <span class="title">While the World Was Watching Gaza and Ukraine, Things Have Only Gotten Worse in Iraq and Syria</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/weigel/2014/07/23/andrew_cuomo_says_it_s_okay_that_he_shut_down_an_ethics_commission_because.html?wpisrc=burger_bar" class="primary">
             <span class="title">Andrew Cuomo Says It's Okay that He Shut Down an Ethics Commission, Because He Started It</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/news_and_politics/politics/2014/07/the_halbig_decision_is_dangerous_for_republicans_obamacare_is_more_popular.html?wpisrc=burger_bar" class="primary">
             <span class="title">Why the <em>Halbig</em> Decision Is Nothing for Republicans to Celebrate</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/news_and_politics.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
+
 
 <section class="stories-for-nav" id="arts_stories_for_nav" data-vr-zone="Nav-arts">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/browbeat/2014/07/23/songs_that_time_forgot_the_most_and_least_obscure_hits_in_two_charts.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Brow Beat</span>
 			<img src="http://www.slate.com/content/dam/slate/blogs/browbeat/2014/07/23/songs_that_time_forgot_the_most_and_least_obscure_hits_in_two_charts/2152236-american-idol-season-two-finalist-clay-aiken-performs.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">The Hit Songs That Have Been Completely Forgotten, in One Chart</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/browbeat/2014/07/23/potterhood_trailer_a_boyhood_harry_potter_mashup_12_years_in_the_making.html?wpisrc=burger_bar" class="primary">
             <span class="title">A <em>Boyhood</em> and <em>Harry Potter </em>Mashup 12 Years in the Making</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/browbeat/2014/07/23/live_new_yorker_cartoons_seth_meyers_and_david_remnick_make_the_unfunny.html?wpisrc=burger_bar" class="primary">
             <span class="title">Seth Meyers Found a Way to Make <em>New Yorker </em>Cartoons Really Funny</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/browbeat/2014/07/23/jack_white_sad_at_cubs_game_sad_jack_white_is_the_new_sad_kanye_is_the_new.html?wpisrc=burger_bar" class="primary">
             <span class="title">Sad Jack White Is the New Sad Kanye Is the New Sad Keanu</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/arts.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
+
 
 <section class="stories-for-nav" id="technology_stories_for_nav" data-vr-zone="Nav-technology">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/future_tense/2014/07/23/two_weird_holes_in_siberia_are_they_related_to_climate_change_video.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Future Tense</span>
 			<img src="http://www.slate.com/content/dam/slate/blogs/future_tense/2014/07/23/FT-140723-siberian%20hole.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">Now There Are Two Weird Holes in Siberia</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/future_tense/2014/07/23/netizen_report_censorship_social_media_sneakiness_in_southeast_asia.html?wpisrc=burger_bar" class="primary">
             <span class="title">Netizen Report: Censorship and Social Media Sneakiness Abound in Southeast Asia</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/future_tense/2014/07/23/david_lesh_used_the_drone_from_his_small_business_to_find_a_missing_elderly.html?wpisrc=burger_bar" class="primary">
             <span class="title">Drones Really Do Find People in Search-and-Rescue Missions</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/technology/future_tense/2014/07/ed_tech_promoters_need_to_realize_we_re_not_all_autodidacts.html?wpisrc=burger_bar" class="primary">
             <span class="title">Ed Tech Promoters Need to Realize We’re Not All Autodidacts</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/technology.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
+
 
 <section class="stories-for-nav" id="business_stories_for_nav" data-vr-zone="Nav-business">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/moneybox/2014/07/23/ceo_pay_for_performance_this_graph_shows_why_it_s_a_sham.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Moneybox</span>
 			<img src="http://www.slate.com/content/dam/slate/blogs/moneybox/2014/07/23/ceo_pay_for_performance_this_graph_shows_why_it_s_a_sham/153125352-oracle-ceo-larry-ellison-delivers-a-keynote-address.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">This Infuriating Graph Proves That CEO Pay-for-Performance Is a Sham</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/moneybox/2014/07/23/chrysler_ignition_switch_defect_so_similar_to_the_general_motors_recall.html?wpisrc=burger_bar" class="primary">
             <span class="title">Like GM, Chrysler Has a Scary Stalling Defect, but People Aren’t Nearly as Upset About It</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/business_insider/2014/07/23/boris_wertz_of_verizon_one_ventures_discusses_why_venture_capitalists_want.html?wpisrc=burger_bar" class="primary">
             <span class="title">Why Venture Capitalists Want to Fund Women-Led Startups</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/moneybox/2014/07/22/apple_earnings_iphone_revenues_are_as_big_as_amazon.html?wpisrc=burger_bar" class="primary">
             <span class="title">If Apple Products Were Their Own Companies, They’d Be as Big as...</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/business.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
+
 
 <section class="stories-for-nav" id="life_stories_for_nav" data-vr-zone="Nav-life">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/outward/2014/07/23/the_united_methodist_church_approaches_schism_how_gay_equality_is_raising.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Outward</span>
 			<img src="http://www.slate.com/content/dam/slate/blogs/outward/2014/07/23/the_united_methodist_church_approaches_schism_how_gay_equality_is_raising/shutterstock_90160771.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">The United Methodist Church Is Split on Gays. But Is Schism the Answer?</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/life/gentleman_scholar/2014/07/what_should_you_tip_an_obviously_racist_cabdriver.html?wpisrc=burger_bar" class="primary">
             <span class="title">What Should a Gentleman Tip a Racist Cabdriver?</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/the_vault/2014/07/23/gandhi_and_fdr_history_letter_from_indian_leader_to_roosevelt_in_1942.html?wpisrc=burger_bar" class="primary">
             <span class="title">Gandhi's 1942 Letter to FDR, Asking For Support For Indian Independence&nbsp;</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/lexicon_valley/2014/07/23/study_men_interrupt_women_more_in_tech_workplaces_but_high_ranking_women.html?wpisrc=burger_bar" class="primary">
             <span class="title">How to Get Ahead as a Woman in Tech: Interrupt Men</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/life.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
+
 
 <section class="stories-for-nav" id="health_and_science_stories_for_nav" data-vr-zone="Nav-health_and_science">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/wild_things/2014/07/23/dog_jealousy_dog_toy_study_shows_dogs_possessive_of_owner_s_attention.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Wild Things</span>
 			<img src="http://www.slate.com/content/dam/slate/blogs/wild_things/2014/07/23/dog_jealousy_dog_toy_study_shows_dogs_possessive_of_owner_s_attention/three_collies_hires_photo_by_steve_harris.jpeg.CROP.promo-mediumsmall.jpeg" />
         </div>
-		
+
         <span class="title">Do Dogs Get Jealous?</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/health_and_science/science/2014/07/what_was_the_bloop_explanations_for_the_sound_recorded_in_the_pacific_ocean.html?wpisrc=burger_bar" class="primary">
             <span class="title">The Bloop: The Mystery of a Piercing Sound From Deep in the Pacific &nbsp;</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/bad_astronomy/2014/07/23/falcon_9_reuseability_video_of_splashdown_after_successful_launch.html?wpisrc=burger_bar" class="primary">
             <span class="title">Rocketcam Video of the SpaceX Falcon Booster Splashing Down in the Atlantic</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/bad_astronomy/2014/07/23/comic_con_2014_my_schedule.html?wpisrc=burger_bar" class="primary">
             <span class="title">My 2014 Comic-Con Schedule</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/health_and_science.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
+
 
 <section class="stories-for-nav" id="double_x_stories_for_nav" data-vr-zone="Nav-double_x">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/xx_factor/2014/07/23/_everyone_gets_a_gun_nra_news_commentator_billy_johnson_wants_gun_required.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">The XX Factor</span>
 			<img src="http://www.slate.com/content/dam/slate/blogs/xx_factor/2014/Kid_gun.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">NRA Commentator: Kids Should Be Required to Learn How to Shoot a Gun in School &nbsp;</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/xx_factor/2014/07/23/ted_cruz_is_mad_at_true_blood_calls_the_hbo_show_misogynist.html?wpisrc=burger_bar" class="primary">
             <span class="title">Ted Cruz Has Some Thoughts About <em>True Blood</em></span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/xx_factor/2014/07/23/glass_ceiling_study_women_and_people_of_color_are_penalized_for_valuing.html?wpisrc=burger_bar" class="primary">
             <span class="title">Women Can Succeed in Corporate America, as Long as They Don't Promote Other Women</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/xx_factor/2014/07/22/johns_hopkins_190_million_ob_gyn_settlement_it_won_t_buy_closure_for_nikita.html?wpisrc=burger_bar" class="primary">
             <span class="title">$190 Million Can’t Buy “Closure” for the Victims of Johns Hopkins’ Abusive Gynecologist</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/double_x.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
+
 
 section class="stories-for-nav" id="sports_stories_for_nav" data-vr-zone="Nav-sports">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/sports/sports/2014/07/neil_harman_plagiarism_the_all_england_club_discovered_journalistic_malfeasance.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Sports</span>
 			<img src="http://www.slate.com/content/dam/slate/articles/sports/sports_nut/2014/07/140723_SNUT_WimbledonLogo.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">Wimbledon Discovered Its Annual Yearbook Was Full of Plagiarism, Kept Selling It Anyway</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/the_spot/2014/07/21/mls_premier_league_la_liga_serie_a_champions_league_bundesliga_how_to_follow.html?wpisrc=burger_bar" class="primary">
             <span class="title">How to Follow Soccer Now that the World Cup Is Over</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/sports/sports_nut/2014/07/lance_stephenson_hornets_was_charlotte_right_to_sign_the_nba_s_most_fascinatingly.html?wpisrc=burger_bar" class="primary">
             <span class="title">Lance Stephenson Is the Most Fascinatingly Flawed Player in the NBA</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/the_spot/2014/07/17/this_lovely_animation_will_make_you_wish_the_world_cup_was_still_happening.html?wpisrc=burger_bar" class="primary">
             <span class="title">This Lovely Animation Will Make You Wish the World Cup Were Still Happening</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/sports.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
+
 
 <section class="stories-for-nav" id="video_stories_for_nav" data-vr-zone="Nav-video">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/video/dear_prudence/2014/07/dear_prudence_video_worry_over_baby_s_body_image.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Dear Prudence</span>
 			<img src="http://www.slate.com/content/dam/slate/articles/life/dear_prudence/PRUDIE_ANIMATED_PROMO.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">Help! My Mother Is Obsessed With My 1-Year-Old’s “Waistline.”</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/video/video/2014/07/happiest_age_when_are_americans_most_satisfied_with_their_appearance_video.html?wpisrc=burger_bar" class="primary">
             <span class="title">At What Age Are Americans Happiest With Their Appearance? (Video.)</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/video/video/2014/07/malaysia_airlines_flight_17_msnbc_prank_call_another_howard_stern_fan_pranks.html?wpisrc=burger_bar" class="primary">
             <span class="title">MSNBC Prank Call: Will Jokesters Ever Stop Making It on Live TV? (Video.)&nbsp;</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/video/video/2014/07/giant_wave_pool_video_edinburgh_s_flowave_can_generate_waves_90_feet_high.html?wpisrc=burger_bar" class="primary">
             <span class="title">Watch an Intense New Research Pool Simulate 90-Foot Waves</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/video.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-         
-              
-              
+
+
+
 
 <section class="stories-for-nav" id="photos_stories_for_nav" data-vr-zone="Nav-photos">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/behold/2014/07/23/miho_aikawa_photographs_people_eating_dinner_in_her_series_dinner_in_ny.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Behold</span>
 			<img src="http://www.slate.com/content/dam/slate/blogs/behold/2014/07/Dinner/DinnerinNY_005.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">The Way We Eat Dinner Now</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/behold/2014/07/22/isabel_martinez_quantum_blink_examines_the_idea_of_multiple_conscious_moments.html?wpisrc=burger_bar" class="primary">
             <span class="title">Mesmerizing Portraits That Capture Multiple Moments in a Single Second</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/behold/2014/07/21/martin_roemers_photographs_signs_of_the_cold_war_s_legacy_in_europe_in_his.html?wpisrc=burger_bar" class="primary">
             <span class="title">The Cold War May Be Over, but Its Decaying Relics Can Be Found All Over Europe&nbsp;</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/blogs/behold/2014/07/20/chloe_aftel_genderqueer_are_portraits_of_the_san_francisco_area_community.html?wpisrc=burger_bar" class="primary">
             <span class="title">Intimate Portraits of the Genderqueer Community in San Francisco</span>
         </a>
     </div>
-    
-    
+
+
 
 </section>
 
 
-              
-              
+
+
 
 <section class="stories-for-nav" id="podcasts_stories_for_nav" data-vr-zone="Nav-podcasts">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/podcasts/culturegabfest/2014/07/slate_s_culture_gabfest_on_dawn_of_the_planet_of_the_apes_kickstarter_s.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Culture Gabfest</span>
 			<img src="http://www.slate.com/content/dam/slate/articles/podcasts/trash-xxx/ILLO_gabfest-podcast1.gif.CROP.promo-mediumsmall.gif" />
         </div>
-		
+
         <span class="title">Why Nerds Love “Weird Al” Yankovic</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/podcasts/gist/2014/07/the_gist_learns_the_history_of_nypd_mafia_investigator_lieutenant_joe_petrosino.html?wpisrc=burger_bar" class="primary">
             <span class="title">New Clues Emerge in 1909 Murder of an NYPD Cop Overseas</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/podcasts/hang_up_and_listen/2014/07/iroquois_nationals_lacrosse_hang_up_and_listen_on_baseball_s_search_for.html?wpisrc=burger_bar" class="primary">
             <span class="title">The Greatness of Washington Generals Coach Red Klotz, Who Lost More Than 14,000 Games</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/podcasts/future_tense/2014/07/techno_sapiens_podcast_should_you_feel_comfortable_uploading_self_tracking.html?wpisrc=burger_bar" class="primary">
             <span class="title">Should You Feel Comfortable Uploading Your Calorie Count to the Cloud?</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/podcasts.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
 
 
-              
-              
+
+
 
 <section class="stories-for-nav" id="slateplus_stories_for_nav" data-vr-zone="Nav-slateplus">
 
     <div class="photo-story story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/podcasts/gabfest/2014/07/watch_a_live_stream_of_the_july_24_political_gabfest_taping.html?wpisrc=burger_bar" class="primary"></a>
-        
+
         <div class="photo">
             <span class="rubrik">Political Gabfest</span>
 			<img src="http://www.slate.com/content/dam/slate/articles/podcasts/gabfest/Podcast_Political_Gabfest_Promo_Large.jpg.CROP.promo-mediumsmall.jpg" />
         </div>
-		
+
         <span class="title">Watch a Live Stream of the July 24 Political Gabfest Taping&nbsp;</span>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/news_and_politics/slate_fare/2014/07/the_future_of_slate_new_editor_in_chief_julia_turner_talks_longform_podcasts.html?wpisrc=burger_bar" class="primary">
             <span class="title">New Editor Julia Turner Chats With <strong>Slate Plus</strong> Members About the Magazine’s Future</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/podcasts/family/2014/07/slate_out_loud_david_plotz_reads_herbert_stein_s_classic_essay_watching.html?wpisrc=burger_bar" class="primary">
             <span class="title">David Plotz Reads His All-Time Favorite <strong><em>Slate</em></strong> Essay: <strong>“</strong>Watching the Couples Go By” (AUDIO)</span>
         </a>
     </div>
-    
+
     <div class="story" data-vr-contentbox="">
         <a href="http://www.slate.com/articles/news_and_politics/slate_fare/2014/07/slate_weekly_roundup_david_plotz_on_slate_s_greatest_hits_since_1996.html?wpisrc=burger_bar" class="primary">
             <span class="title">David Plotz Is the Wrong Person to Tell You What to Read This Week</span>
         </a>
     </div>
-    
-    
+
+
     <div class="load-more-button">
         <a href="http://www.slate.com/articles/slate_plus.html?wpisrc=burger_bar">VIEW ALL</a>
-        
+
     </div>
-    
+
 
 </section>
 
-              
-            
+
+
           </div><!-- ./col.stories -->
           <div class="col sections" id="nav_home_sections" data-vr-zone="Nav-Sections">
             <ul class="unstyled">
@@ -2810,26 +2810,26 @@ section class="stories-for-nav" id="sports_stories_for_nav" data-vr-zone="Nav-sp
               <li><a id="slateplus_stories_preview_link" href="/plus/home?wpisrc=burger_bar">SLATE PLUS</a></li>
             </ul>
           </div><!-- /.col.sections -->
-         
+
         </div><!-- /.cols -->
         <div class="links">
           <section class="follow-slate">
             <header style="padding-bottom: none; border-bottom: none; margin-bottom: -16px;">
               <h2>Follow Slate</h2>
-            
+
               <div class="social yellow horiz-counts">
                 <a href="#" class="email countless" style="display: none;">
-                  <span class="icon"></span>           
-                </a>          
-      
+                  <span class="icon"></span>
+                </a>
+
                 <a href="http://www.facebook.com/Slate" class="facebook" style="width: auto;">
                   <span class="icon"></span>
                   <span class="count"></span>
-                </a>    
+                </a>
                 <a href="https://twitter.com/slate" class="twitter" style="width: auto; margin-right: 10px;">
                   <span class="icon"></span>
-                  <span class="count"></span>            
-                </a>          
+                  <span class="count"></span>
+                </a>
               </div>
             </header>
           </section><!-- /.follow-slate-->
@@ -2862,31 +2862,31 @@ section class="stories-for-nav" id="sports_stories_for_nav" data-vr-zone="Nav-sp
   </div>
 </div>
 <!-- HCS END: layouts/shared/nav/nav -->
-    
+
     <section class="nav-panel" id="nav_header_for_rollup_magic">
       <div class="nav-header">
         <a class="slate-logo" href="/"><span class="logo">Slate</span></a>
         <a href="#" class="search-link sidebar-handle"></a>
         <a href="#" class="global-nav-handle sidebar-handle"></a>
-        
+
         <div class="buttons">
-          
+
           <span class="link option"><a class="first nav-option sign-in-link" href="#" id="sign_in_link">
             Sign In
           </a></span>
           <span class="link option"><a href="#" class="nav-option sign-up-link" id="sign_up_link">Sign Up</a></span>
-          
+
         </div>
-        
+
       </div>
     </section>
-    
+
 
     <div id="nav_animation_mask">
 
     </div>
 
-    
+
     <span class='highlighter-container'>
       <div class="social social-with-popup">
         <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]=http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html&p[images][0]=http://www.slate.com/content/dam/slate/uploads/2014/7/17/graphical_version.png/_jcr_content/renditions/cq5dam.web.1280.1280.png&p[title]=The+Middle+East+Friendship+Chart&p[summary]=With+overlapping+civil+wars+in+Syria+and+Iraq%2C+a+new+flare-up+of+violence+between+Israel+and+the+Palestinians%2C+and+tense+nuclear+talks+with+Iran%2C+Middle+Eastern+politics+are+more+volatile+than+ever+and+longtime+alliances+are+shifting.+Here%27s+a+guide+to+who%27s+on+whose+side+in+the+escalating+chaos.+Click..." class="facebook share highlighter">
@@ -2895,11 +2895,11 @@ section class="stories-for-nav" id="sports_stories_for_nav" data-vr-zone="Nav-sp
         <a href="http://twitter.com/share?url=http://www.slate.com/blogs/the_world_/2014/07/17/the_middle_east_friendship_chart.html&count=none&via=slate" class="twitter">
           <span class="icon"></span>
         </a>
-        
+
           <a href="#comments" class="comments" style="display: none;">
             <span class="icon"></span>
           </a>
-        
+
       </div>
         <div class="arrow-border"></div>
         <div class="arrow"></div>
@@ -2929,7 +2929,7 @@ section class="stories-for-nav" id="sports_stories_for_nav" data-vr-zone="Nav-sp
       })();
     });
     </script>
-    
+
 <!-- HCS END: layouts/shared/bottom -->
 
     <!-- Campaigns -->
@@ -2946,15 +2946,3 @@ section class="stories-for-nav" id="sports_stories_for_nav" data-vr-zone="Nav-sp
   -->
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

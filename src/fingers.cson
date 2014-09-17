@@ -40,6 +40,12 @@
 				"
 		}
 		{
+			video:"Murakami_scone"
+		}
+		{
+			video:"Murakami_phone"
+		}
+		{
 			img:"ao_lexus.jpg"
 		}
 		{
@@ -47,6 +53,9 @@
 		}
 	]
 	white:[
+		{
+			video:"Murakami_piano"
+		}
 		{
 			text:"
 				<p><em>wrong</em> with her then. She had a lot of musical talent.</p>
@@ -57,9 +66,9 @@
 		{
 			text:"
 				<p class=\"final\">listen to.”</p>
-        <p><span class=\"indent\"></span>“<span class=\"text_white\">Yuzu</span> played this piece so beautifully. She put so</p>
+				<p><span class=\"indent\"></span>“<span class=\"text_white\">Yuzu</span> played this piece so beautifully. She put so</p>
 				<p class=\"final\">much feeling into it.”</p>
-        <p><span class=\"indent\"></span>“She really did. She was very good at pieces this</p>
+				<p><span class=\"indent\"></span>“She really did. She was very good at pieces this</p>
 				<p>length. In longer pieces she sort of ran out of energy</p>
 			"
 		}
